@@ -8,10 +8,12 @@ class Bookable {
     private string $_title;
     private array $_rooms = [Room::class];
     private Address $_address;
+    private float $_price;
 
-    function __construct(int $id, string $_title = "") {
+    function __construct(int $id, float $price, string $title = "") {
         $this->_id = $id;
-        $this->_title = $_title;
+        $this->_title = $title;
+        $this->_price = $price;
     }
 
     /**
@@ -47,5 +49,12 @@ class Bookable {
      */
     public function get_title(): string {
         return $this->_title;
+    }
+
+    /**
+     * @return float
+     */
+    public function get_price(): float {
+        return $this->_price;
     }
 }

@@ -3,16 +3,18 @@
 declare(strict_types=1);
 
 use Huppys\BookMe\Address;
-use PHPUnit\Framework\TestCase;
 use Huppys\BookMe\Bookable;
+use PHPUnit\Framework\TestCase;
 
 final class BookableTest extends TestCase {
     private Bookable $_bookable;
     private string $_bookableTitle;
+    private float $_price;
 
     public function setUp(): void {
         $this->_bookableTitle = "Ferienhaus Seepferdchen";
-        $this->_bookable = new Bookable(1, $this->_bookableTitle);
+        $this->_price = 1;
+        $this->_bookable = new Bookable(1, $this->_price, $this->_bookableTitle);
     }
 
     public function testBookableExists(): void {
@@ -31,5 +33,9 @@ final class BookableTest extends TestCase {
 
     public function testBookableHasTitle(): void {
         $this->assertEquals($this->_bookableTitle, $this->_bookable->get_title());
+    }
+
+    public function testBookableHasPrice(): void {
+        $this->assertNotNull($this->_bookable->get_price());
     }
 }

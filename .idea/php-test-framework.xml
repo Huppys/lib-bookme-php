@@ -5,7 +5,11 @@
       <tool tool_name="PHPUnit">
         <cache>
           <versions>
-            <info id="interpreter-4aa5efa4-e846-4863-a8d6-91d96364f4f1" version="9.5.24" />
+            <info id="interpreter-2602a412-e677-4d0b-8f8d-d98be8b55553" version="9.5.24" />
+            <info id="interpreter-2e9ab9ee-4d02-4e3d-b270-2971f13dca7d" version="9.5.24" />
+            <info id="interpreter-a27471d5-e85e-4630-9a9f-4fe5780e428f" version="9.5.24" />
+            <info id="interpreter-b60b6393-178e-492a-bdcf-1ed2352a4211" version="9.5.24" />
+            <info id="interpreter-f0dc38de-d3f6-4192-b141-7b062c05391b" version="9.5.24" />
           </versions>
         </cache>
       </tool>

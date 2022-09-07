@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Huppys\BookMe;
 
@@ -23,10 +25,49 @@ class Reservation {
     /**
      * @throws Exception
      */
-    public function confirmReservation(): ?Error {
+    public function markAsConfirmed(): ?Error {
 
         if ($this->_status == ReservationStatus::Created) {
             $this->set_status(ReservationStatus::Confirmed);
+        } else {
+            return new Error("Unexpected value for reservation status");
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function markAsRejected(): ?Error {
+        if ($this->_status == ReservationStatus::Created) {
+            $this->set_status(ReservationStatus::Rejected);
+        } else {
+            return new Error("Unexpected value for reservation status");
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function markAsEnded(): ?Error {
+        if ($this->_status == ReservationStatus::Paid) {
+            $this->set_status(ReservationStatus::Ended);
+        } else {
+            return new Error("Unexpected value for reservation status");
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function markAsPaid(): ?Error {
+        if ($this->_status == ReservationStatus::Confirmed) {
+            $this->set_status(ReservationStatus::Paid);
         } else {
             return new Error("Unexpected value for reservation status");
         }

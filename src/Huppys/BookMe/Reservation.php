@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Huppys\BookMe;
 
-use DateTime;
+use DateTimeImmutable;
 use Error;
 use Exception;
 
 class Reservation {
 
-    private DateTime $_checkInDate;
-    private DateTime $_checkOutDate;
+    private DateTimeImmutable $_checkInDate;
+    private DateTimeImmutable $_checkOutDate;
     private Bookable $_bookableEntity;
     private ReservationStatus $_status;
 
-    function __construct(DateTime $checkInDate, DateTime $checkOutDate, Bookable $bookableEntity) {
+    function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity) {
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
@@ -27,7 +27,7 @@ class Reservation {
      */
     public function markAsConfirmed(): ?Error {
 
-        if ($this->_status == ReservationStatus::Created) {
+        if ($this->isRequestValid()) {
             $this->set_status(ReservationStatus::Confirmed);
         } else {
             return new Error("Unexpected value for reservation status");
@@ -76,16 +76,16 @@ class Reservation {
     }
 
     /**
-     * @return DateTime
+     * @return DateTimeImmutable
      */
-    function get_checkInDate(): DateTime {
+    function get_checkInDate(): DateTimeImmutable {
         return $this->_checkInDate;
     }
 
     /**
-     * @return DateTime
+     * @return DateTimeImmutable
      */
-    function get_checkOutDate(): DateTime {
+    function get_checkOutDate(): DateTimeImmutable {
         return $this->_checkOutDate;
     }
 
@@ -108,5 +108,36 @@ class Reservation {
      */
     public function set_status(ReservationStatus $status): void {
         $this->_status = $status;
+    }
+
+    /**
+     * Check if reservation request is valid
+     * @return bool
+     */
+    public function isRequestValid(): bool {
+        if ($this->get_status() != ReservationStatus::Created) {
+            return false;
+        }
+
+        if ($this->checkInDateIsBeforeCheckOutDate()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Calculate costs for the reservation
+     * @return float
+     */
+    public function calculateCosts(): float {
+        return $this->_bookableEntity->calculateCosts($this->_checkInDate, $this->_checkOutDate);
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkInDateIsBeforeCheckOutDate(): bool {
+        return $this->get_checkInDate()->getTimestamp() < $this->get_checkOutDate()->getTimestamp();
     }
 }

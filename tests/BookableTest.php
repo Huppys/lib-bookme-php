@@ -4,38 +4,33 @@ declare(strict_types=1);
 
 use Huppys\BookMe\Address;
 use Huppys\BookMe\Bookable;
-use PHPUnit\Framework\TestCase;
+use Huppys\BookMe\ReservationBaseTest;
 
-final class BookableTest extends TestCase {
-    private Bookable $_bookable;
-    private string $_bookableTitle;
-    private float $_price;
-
-    public function setUp(): void {
-        $this->_bookableTitle = "Ferienhaus Seepferdchen";
-        $this->_price = 1;
-        $this->_bookable = new Bookable(1, $this->_price, $this->_bookableTitle);
-    }
+final class BookableTest extends ReservationBaseTest {
 
     public function testBookableExists(): void {
-        $this->assertInstanceOf(Bookable::class, $this->_bookable);
+        $this->assertInstanceOf(Bookable::class, $this->bookableEntity);
     }
 
     public function testBookableHasRooms(): void {
-        $this->assertIsArray($this->_bookable->get_rooms());
+        $this->assertIsArray($this->bookableEntity->get_rooms());
     }
 
     public function testBookableHasAddress(): void {
         $address = new Address("Berlin", "Lange Straße", "44", "10409");
-        $this->_bookable->set_address($address);
-        $this->assertInstanceOf(Address::class, $this->_bookable->get_address());
+        $this->bookableEntity->set_address($address);
+        $this->assertInstanceOf(Address::class, $this->bookableEntity->get_address());
     }
 
     public function testBookableHasTitle(): void {
-        $this->assertEquals($this->_bookableTitle, $this->_bookable->get_title());
+        $this->assertEquals($this->_bookableTitle, $this->bookableEntity->get_title());
     }
 
     public function testBookableHasPrice(): void {
-        $this->assertNotNull($this->_bookable->get_price());
+        $this->assertNotNull($this->bookableEntity->get_price());
+    }
+
+    public function testBookableHasTariff(): void {
+        $this->assertIsArray($this->bookableEntity->get_tariffs());
     }
 }

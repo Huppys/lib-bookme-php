@@ -9,11 +9,15 @@ class Bookable {
     private array $_rooms = [Room::class];
     private Address $_address;
     private float $_price;
+    private float $_taxAmount;
+    private array $_tariffs;
 
-    function __construct(int $id, float $price, string $title = "") {
+    function __construct(int $id, float $price, float $taxAmount, array $tariffs, string $title = "") {
         $this->_id = $id;
         $this->_title = $title;
         $this->_price = $price;
+        $this->_taxAmount = $taxAmount;
+        $this->_tariffs = $tariffs;
     }
 
     /**
@@ -56,5 +60,29 @@ class Bookable {
      */
     public function get_price(): float {
         return $this->_price;
+    }
+
+    /**
+     * @return float
+     */
+    public function get_taxAmount(): float {
+        return $this->_taxAmount;
+    }
+
+    /**
+     * Returns price incl. taxes
+     * @return float
+     */
+    public function get_priceInclTaxes(): float {
+        return (1 + ($this->_taxAmount / 100.0)) * $this->_price;
+    }
+
+    public function calculateCosts($startDate, $endDate): float {
+        $dateDiff = $startDate->diff($endDate)->format('%a');
+        return (int)$dateDiff * ($this->get_priceInclTaxes());
+    }
+
+    public function get_tariffs(): array {
+        return $this->_tariffs;
     }
 }

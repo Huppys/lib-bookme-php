@@ -2,23 +2,12 @@
 
 declare(strict_types=1);
 
-use Huppys\BookMe\Bookable;
-use Huppys\BookMe\Reservation;
+use Huppys\BookMe\ReservationBaseTest;
 use Huppys\BookMe\ReservationStatus;
-use PHPUnit\Framework\TestCase;
 
-final class ReservationTest extends TestCase {
-    private Reservation $reservation;
-    private DateTime $checkInDate;
-    private DateTime $checkOutDate;
-    private Bookable $bookableEntity;
 
-    public function setUp(): void {
-        $this->checkInDate = new DateTime();
-        $this->checkOutDate = new DateTime();
-        $this->bookableEntity = new Bookable(1, 1.0, "Ferienhaus Seepferdchen");
-        $this->reservation = new Reservation($this->checkInDate, $this->checkOutDate, $this->bookableEntity);
-    }
+class ReservationTest extends ReservationBaseTest {
+
 
     public function testReservationHasCheckInAndCheckOutDates(): void {
         $this->assertEquals($this->checkInDate, $this->reservation->get_checkInDate());
@@ -31,6 +20,10 @@ final class ReservationTest extends TestCase {
 
     public function testReservationHasStateCreated(): void {
         $this->assertEquals(ReservationStatus::Created, $this->reservation->get_status());
+    }
+
+    public function testReservationRequestIsValid(): void {
+        $this->assertTrue($this->reservation->isRequestValid());
     }
 
     /**

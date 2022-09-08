@@ -10,6 +10,7 @@
 * room entities
 	* costs by seasons
 * taxes
+* tariffs
 
 ### web app architecture
 * Data access layer

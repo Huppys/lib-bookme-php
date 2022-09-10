@@ -14,8 +14,10 @@ class Reservation {
     private DateTimeImmutable $_checkOutDate;
     private Bookable $_bookableEntity;
     private ReservationStatus $_status;
+    private float $_costsInclTaxes = 0;
 
     function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity) {
+        // TODO: Validate checkInDate and checkOutDate
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
@@ -119,7 +121,7 @@ class Reservation {
             return false;
         }
 
-        if ($this->checkInDateIsBeforeCheckOutDate()) {
+        if (!$this->checkInDateIsBeforeCheckOutDate()) {
             return false;
         }
 
@@ -129,9 +131,14 @@ class Reservation {
     /**
      * Calculate costs for the reservation
      * @return float
+     * @throws Exception
      */
     public function calculateCosts(): float {
-        return $this->_bookableEntity->calculateCosts($this->_checkInDate, $this->_checkOutDate);
+        if ($this->_costsInclTaxes == 0) {
+            $this->_costsInclTaxes = $this->_bookableEntity->calculateCosts($this->_checkInDate, $this->_checkOutDate);
+        }
+
+        return $this->_costsInclTaxes;
     }
 
     /**

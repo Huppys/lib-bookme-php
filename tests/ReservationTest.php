@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-use Huppys\BookMe\ReservationBaseTest;
-use Huppys\BookMe\ReservationStatus;
+namespace Huppys\BookMe\tests;
 
+
+use Error;
+use Exception;
+use Huppys\BookMe\ReservationStatus;
 
 class ReservationTest extends ReservationBaseTest {
 
@@ -59,11 +62,17 @@ class ReservationTest extends ReservationBaseTest {
         $this->assertEquals(ReservationStatus::Paid, $this->reservation->get_status());
     }
 
+    /**
+     * @throws Exception
+     */
     public function testRejectedReservationCannotBePaid(): void {
         $this->reservation->markAsRejected();
         $this->assertInstanceOf(Error::class, $this->reservation->markAsPaid());
     }
 
+    /**
+     * @throws Exception
+     */
     public function testReservationHasEnded(): void {
         $this->reservation->markAsConfirmed();
         $this->reservation->markAsPaid();

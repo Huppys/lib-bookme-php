@@ -6,6 +6,16 @@
         <entry key="2602a412-e677-4d0b-8f8d-d98be8b55553">
           <value>
             <DockerContainerSettings>
+              <option name="portBindings">
+                <list>
+                  <DockerPortBindingImpl>
+                    <option name="containerPort" value="9003" />
+                    <option name="hostIp" value="0.0.0.0" />
+                    <option name="hostPort" value="9003" />
+                  </DockerPortBindingImpl>
+                </list>
+              </option>
+              <option name="runCliOptions" value="" />
               <option name="version" value="1" />
               <option name="volumeBindings">
                 <list>
@@ -66,6 +76,31 @@
         <entry key="b60b6393-178e-492a-bdcf-1ed2352a4211">
           <value>
             <DockerContainerSettings>
+              <option name="version" value="1" />
+              <option name="volumeBindings">
+                <list>
+                  <DockerVolumeBindingImpl>
+                    <option name="containerPath" value="/opt/project" />
+                    <option name="hostPath" value="$PROJECT_DIR$" />
+                  </DockerVolumeBindingImpl>
+                </list>
+              </option>
+            </DockerContainerSettings>
+          </value>
+        </entry>
+        <entry key="eb03dc72-5129-4e96-8360-34ab8a4c18c6">
+          <value>
+            <DockerContainerSettings>
+              <option name="portBindings">
+                <list>
+                  <DockerPortBindingImpl>
+                    <option name="containerPort" value="9003" />
+                    <option name="hostIp" value="0.0.0.0" />
+                    <option name="hostPort" value="9003" />
+                  </DockerPortBindingImpl>
+                </list>
+              </option>
+              <option name="runCliOptions" value="" />
               <option name="version" value="1" />
               <option name="volumeBindings">
                 <list>

@@ -6,4 +6,15 @@ RUN pecl install xdebug-3.1.5 && \
     echo "xdebug.start_with_request = yes" >> /usr/local/etc/php/conf.d/xdebug.ini &&  \
     echo "xdebug.client_port = 9003" >> /usr/local/etc/php/conf.d/xdebug.ini &&  \
     rm -rf /tmp/pear
+
+RUN apt update && \
+    apt install -y git libzip-dev
+
+RUN docker-php-ext-install zip
+
+COPY ./install-composer.sh /opt/src/composer/install-composer.sh
+RUN chmod +x /opt/src/composer/install-composer.sh
+RUN /opt/src/composer/install-composer.sh
+RUN ln -nfs /usr/local/bin/composer.phar /usr/local/bin/composer
+
 EXPOSE 9003

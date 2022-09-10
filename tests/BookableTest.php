@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Huppys\BookMe\tests;
+
 use Huppys\BookMe\Address;
 use Huppys\BookMe\Bookable;
-use Huppys\BookMe\ReservationBaseTest;
 
 final class BookableTest extends ReservationBaseTest {
 
@@ -24,10 +25,6 @@ final class BookableTest extends ReservationBaseTest {
 
     public function testBookableHasTitle(): void {
         $this->assertEquals($this->_bookableTitle, $this->bookableEntity->get_title());
-    }
-
-    public function testBookableHasPrice(): void {
-        $this->assertNotNull($this->bookableEntity->get_price());
     }
 
     public function testBookableHasTariff(): void {

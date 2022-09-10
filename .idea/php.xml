@@ -31,6 +31,8 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/tests" />
+      <path value="$PROJECT_DIR$/vendor/tplaner/when" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

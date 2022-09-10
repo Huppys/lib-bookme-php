@@ -4,6 +4,8 @@
     <list>
       <list>
         <remote-mappings server-id="php@bd8cbcd2-b7d5-4ac5-a418-720ecaf8f72b" />
+        <remote-mappings server-id="php@eb03dc72-5129-4e96-8360-34ab8a4c18c6" />
+        <remote-mappings server-id="php@2602a412-e677-4d0b-8f8d-d98be8b55553" />
       </list>
     </list>
   </component>

@@ -3,27 +3,33 @@
 namespace Huppys\BookMe;
 
 
+use DateTime;
+use DateTimeImmutable;
+use Error;
+use Exception;
+use When\When;
+
 class Bookable {
     private int $_id;
     private string $_title;
     private array $_rooms = [Room::class];
     private Address $_address;
-    private float $_price;
     private float $_taxAmount;
+    /* @var $_tariffs Tariff[] */
     private array $_tariffs;
 
-    function __construct(int $id, float $price, float $taxAmount, array $tariffs, string $title = "") {
+    function __construct(int $id, float $taxAmount, array $tariffs, string $title = "") {
         $this->_id = $id;
         $this->_title = $title;
-        $this->_price = $price;
         $this->_taxAmount = $taxAmount;
+        // TODO: validate tariffs for holes between one and next tariff
         $this->_tariffs = $tariffs;
     }
 
     /**
      * @return int
      */
-    function get_id(): int {
+    public function get_id(): int {
         return $this->_id;
     }
 
@@ -58,28 +64,52 @@ class Bookable {
     /**
      * @return float
      */
-    public function get_price(): float {
-        return $this->_price;
-    }
-
-    /**
-     * @return float
-     */
     public function get_taxAmount(): float {
         return $this->_taxAmount;
     }
 
-    /**
-     * Returns price incl. taxes
-     * @return float
-     */
-    public function get_priceInclTaxes(): float {
-        return (1 + ($this->_taxAmount / 100.0)) * $this->_price;
+    public function taxRate(): float {
+        return 1 + ($this->_taxAmount / 100);
     }
 
-    public function calculateCosts($startDate, $endDate): float {
-        $dateDiff = $startDate->diff($endDate)->format('%a');
-        return (int)$dateDiff * ($this->get_priceInclTaxes());
+    /**
+     * @throws Exception
+     */
+    private function getTariffCostsForDate(DateTimeImmutable $startDate, DateTimeImmutable $endDate): float {
+
+        $costs = 0.0;
+
+        /* @var $tariff Tariff */
+        foreach ($this->_tariffs as $tariff) {
+            $occurrences = $this->getDateOccurrencesInTariff($startDate, $endDate, $tariff);
+            if ($occurrences) {
+                $costs += count($occurrences) * $tariff->get_price();
+            }
+        }
+
+        if ($costs != 0.0) {
+            return $costs;
+        }
+
+        $errorMessage = sprintf("No matching tariffs found for dates from %s to %s", $startDate->format('d.m.Y'), $endDate->format('d.m.Y'));
+
+        throw new Error($errorMessage);
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function getDateOccurrencesInTariff(DateTimeImmutable $startDate, DateTimeImmutable $endDate, Tariff $tariff): array {
+        $when = new When(DateTime::createFromImmutable($startDate)->format('Y-m-d'));
+        $when->freq('daily')->until(DateTime::createFromImmutable($endDate));
+        return $when->getOccurrencesBetween(DateTime::createFromImmutable($tariff->get_start()), DateTime::createFromImmutable($tariff->get_end()));
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function calculateCosts(DateTimeImmutable $startDate, DateTimeImmutable $endDate): float {
+        return $this->getTariffCostsForDate($startDate, $endDate) * $this->taxRate();
     }
 
     public function get_tariffs(): array {

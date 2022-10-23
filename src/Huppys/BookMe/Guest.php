@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Huppys\BookMe;
 
-class Guest {
+class Guest implements Buildable {
     private string $_firstname;
     private string $_lastname;
     private string $_email;

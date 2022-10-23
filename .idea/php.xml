@@ -99,6 +99,11 @@
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
+  <component name="PhpRuntimeConfiguration">
+    <extensions>
+      <extension name="ds" enabled="true" />
+    </extensions>
+  </component>
   <component name="PhpUnit">
     <phpunit_settings>
       <phpunit_by_interpreter interpreter_id="bd8cbcd2-b7d5-4ac5-a418-720ecaf8f72b" custom_loader_path="/usr/src/book-me-dev/vendor/autoload.php" />

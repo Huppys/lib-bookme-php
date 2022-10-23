@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Huppys\BookMe\tests;
@@ -9,25 +8,45 @@ use Huppys\BookMe\Bookable;
 
 final class BookableTest extends ReservationBaseTest {
 
-    public function testBookableExists(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldReturnInstanceOfBookable(): void {
         $this->assertInstanceOf(Bookable::class, $this->bookableEntity);
     }
 
-    public function testBookableHasRooms(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldReturnRoomsAsAnArray(): void {
         $this->assertIsArray($this->bookableEntity->get_rooms());
     }
 
-    public function testBookableHasAddress(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldReturnAddress(): void {
         $address = new Address("Berlin", "Lange Straße", "44", "10409");
         $this->bookableEntity->set_address($address);
         $this->assertInstanceOf(Address::class, $this->bookableEntity->get_address());
     }
 
-    public function testBookableHasTitle(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldReturnTitle(): void {
         $this->assertEquals($this->_bookableTitle, $this->bookableEntity->get_title());
     }
 
-    public function testBookableHasTariff(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldReturnTariff(): void {
         $this->assertIsArray($this->bookableEntity->get_tariffs());
     }
 }

@@ -21,6 +21,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "tplaner/when": "^v3.1.5"
+        "tplaner/when": "^v3.1.5",
+        "ext-ds": "*"
     }
 }

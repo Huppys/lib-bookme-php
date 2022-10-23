@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Huppys\BookMe\tests;
@@ -11,69 +10,97 @@ use Huppys\BookMe\ReservationStatus;
 
 class ReservationTest extends ReservationBaseTest {
 
-
-    public function testReservationHasCheckInAndCheckOutDates(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldSetCheckInDate(): void {
         $this->assertEquals($this->checkInDate, $this->reservation->get_checkInDate());
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldSetCheckOutDate(): void {
         $this->assertEquals($this->checkOutDate, $this->reservation->get_checkOutDate());
     }
 
-    public function testReservationHasBookableEntity(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldSetBookableEntity(): void {
         $this->assertEquals($this->bookableEntity, $this->reservation->get_bookableEntity());
     }
 
-    public function testReservationHasStateCreated(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldCreateReservationAsCreated(): void {
         $this->assertEquals(ReservationStatus::Created, $this->reservation->get_status());
     }
 
-    public function testReservationRequestIsValid(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldCheckReservationLifecycle(): void {
         $this->assertTrue($this->reservation->isRequestValid());
     }
 
     /**
+     * @test
      * @throws Exception
      */
-    public function testReservationHasConfirmedStatus(): void {
+    public function shouldFlagReservationAsConfirmed(): void {
         $this->reservation->markAsConfirmed();
         $this->assertEquals(ReservationStatus::Confirmed, $this->reservation->get_status());
     }
 
     /**
+     * @test
      * @throws Exception
      */
-    public function testReservationCannotBeConfirmedTwice(): void {
+    public function shouldCatchDoubleConfirmation(): void {
         $this->assertNull($this->reservation->markAsConfirmed());
         $this->assertInstanceOf(Error::class, $this->reservation->markAsConfirmed());
     }
 
     /**
+     * @test
      * @throws Exception
      */
-    public function testReservationIsRejectedAfterRejection(): void {
+    public function shouldFlagAsRejected(): void {
         $this->reservation->markAsRejected();
         $this->assertEquals(ReservationStatus::Rejected, $this->reservation->get_status());
     }
 
     /**
+     * @test
      * @throws Exception
      */
-    public function testReservationIsPaid(): void {
+    public function shouldFlagAsPaid(): void {
         $this->reservation->markAsConfirmed();
         $this->reservation->markAsPaid();
         $this->assertEquals(ReservationStatus::Paid, $this->reservation->get_status());
     }
 
     /**
+     * @test
      * @throws Exception
      */
-    public function testRejectedReservationCannotBePaid(): void {
+    public function shouldPreventToFlagRejectedAsPaid(): void {
         $this->reservation->markAsRejected();
         $this->assertInstanceOf(Error::class, $this->reservation->markAsPaid());
     }
 
     /**
+     * @test
      * @throws Exception
      */
-    public function testReservationHasEnded(): void {
+    public function shouldEndReservation(): void {
         $this->reservation->markAsConfirmed();
         $this->reservation->markAsPaid();
         $this->reservation->markAsEnded();

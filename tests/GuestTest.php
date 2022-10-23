@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Huppys\BookMe\tests;
 
@@ -30,7 +31,11 @@ class GuestTest extends TestCase {
         $this->_guest = new Guest($this->_firstname, $this->_lastname, $this->_email, $this->_postalCode, $this->_city, $this->_street, $this->_houseNumber);
     }
 
-    public function test_guestExists(): void {
+    /**
+     * @test
+     * @return void
+     */
+    public function shouldReturnInstanceOfGuest(): void {
         $this->assertInstanceOf(Guest::class, $this->_guest);
     }
 }

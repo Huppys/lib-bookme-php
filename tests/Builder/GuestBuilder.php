@@ -3,13 +3,21 @@ declare(strict_types=1);
 
 namespace Huppys\BookMe\tests\Builder;
 
-class GuestBuilder extends BaseBuilder implements Builder {
+use Huppys\BookMe\Guest;
+
+class GuestBuilder extends BaseBuilder {
 
     public function __construct() {
-        return $this;
-    }
+        $guest = new Guest(
+            'TestFirstname',
+            'TestLastname',
+            'test@email.tld',
+            '12345',
+            'TestCity',
+            'TestStreet',
+            '1'
+        );
 
-    public function setEntity(\Ds\Map $value) {
-        $this->_entity = $value;
+        $this->setEntity($guest);
     }
 }

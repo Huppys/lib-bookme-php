@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Huppys\BookMe;
 
 use DateTimeImmutable;
-use Error;
 use Exception;
+use InvalidArgumentException;
 
 class Reservation implements Buildable {
 
@@ -17,7 +17,11 @@ class Reservation implements Buildable {
     private float $_costsInclTaxes = 0;
 
     function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity) {
-        // TODO: Validate checkInDate and checkOutDate
+
+        if (!$this->checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
+            throw new InvalidArgumentException("Check-in date is not after Check-out date");
+        }
+
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
@@ -27,54 +31,45 @@ class Reservation implements Buildable {
     /**
      * @throws Exception
      */
-    public function markAsConfirmed(): ?Error {
-
-        if ($this->isRequestValid()) {
+    public function markAsConfirmed(): void {
+        if ($this->get_status() == ReservationStatus::Created) {
             $this->set_status(ReservationStatus::Confirmed);
         } else {
-            return new Error("Unexpected value for reservation status");
+            throw new InvalidArgumentException("Unexpected value for reservation status");
         }
-
-        return null;
     }
 
     /**
      * @throws Exception
      */
-    public function markAsRejected(): ?Error {
+    public function markAsRejected(): void {
         if ($this->_status == ReservationStatus::Created) {
             $this->set_status(ReservationStatus::Rejected);
         } else {
-            return new Error("Unexpected value for reservation status");
+            throw new InvalidArgumentException("Unexpected value for reservation status");
         }
-
-        return null;
     }
 
     /**
      * @throws Exception
      */
-    public function markAsEnded(): ?Error {
+    public function markAsEnded(): void {
         if ($this->_status == ReservationStatus::Paid) {
             $this->set_status(ReservationStatus::Ended);
         } else {
-            return new Error("Unexpected value for reservation status");
+            throw new InvalidArgumentException("Unexpected value for reservation status");
         }
-
-        return null;
     }
 
     /**
      * @throws Exception
      */
-    public function markAsPaid(): ?Error {
+    public function markAsPaid(): void {
         if ($this->_status == ReservationStatus::Confirmed) {
             $this->set_status(ReservationStatus::Paid);
         } else {
-            return new Error("Unexpected value for reservation status");
+            throw new InvalidArgumentException("Unexpected value for reservation status");
         }
-
-        return null;
     }
 
     /**
@@ -113,22 +108,6 @@ class Reservation implements Buildable {
     }
 
     /**
-     * Check if reservation request is valid
-     * @return bool
-     */
-    public function isRequestValid(): bool {
-        if ($this->get_status() != ReservationStatus::Created) {
-            return false;
-        }
-
-        if (!$this->checkInDateIsBeforeCheckOutDate()) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * Calculate costs for the reservation
      * @return float
      * @throws Exception
@@ -144,7 +123,7 @@ class Reservation implements Buildable {
     /**
      * @return bool
      */
-    public function checkInDateIsBeforeCheckOutDate(): bool {
-        return $this->get_checkInDate()->getTimestamp() < $this->get_checkOutDate()->getTimestamp();
+    public function checkInDateIsBeforeCheckOutDate(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate): bool {
+        return $checkInDate->getTimestamp() < $checkOutDate->getTimestamp();
     }
 }

@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace Huppys\BookMe\tests;
 
-
-use Error;
 use Exception;
 use Huppys\BookMe\ReservationStatus;
+use InvalidArgumentException;
 
 class ReservationTest extends ReservationBaseTest {
 
@@ -16,14 +15,6 @@ class ReservationTest extends ReservationBaseTest {
      */
     public function shouldCreateReservationAsCreated(): void {
         $this->assertEquals(ReservationStatus::Created, $this->reservation->get_status());
-    }
-
-    /**
-     * @test
-     * @return void
-     */
-    public function shouldCheckReservationLifecycle(): void {
-        $this->assertTrue($this->reservation->isRequestValid());
     }
 
     /**
@@ -40,8 +31,9 @@ class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldCatchDoubleConfirmation(): void {
-        $this->assertNull($this->reservation->markAsConfirmed());
-        $this->assertInstanceOf(Error::class, $this->reservation->markAsConfirmed());
+        $this->expectException(InvalidArgumentException::class);
+        $this->reservation->markAsConfirmed();
+        $this->reservation->markAsConfirmed();
     }
 
     /**
@@ -68,8 +60,9 @@ class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldPreventToFlagRejectedAsPaid(): void {
+        $this->expectException(InvalidArgumentException::class);
         $this->reservation->markAsRejected();
-        $this->assertInstanceOf(Error::class, $this->reservation->markAsPaid());
+        $this->reservation->markAsRejected();
     }
 
     /**

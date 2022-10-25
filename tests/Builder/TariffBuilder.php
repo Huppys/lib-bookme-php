@@ -38,4 +38,22 @@ class TariffBuilder extends BaseBuilder {
 
         $this->setEntity($tariffs);
     }
+
+    /**
+     * @throws Exception
+     */
+    public static function getTariffsWithDateGap(): array {
+        $now = DateTimeImmutable::createFromFormat('Y-m-d|', date('Y-m-d'));
+
+        $tariffSummerStart = clone($now);
+        $tariffSummerEnd = clone ($now)->add(new DateInterval('P1D'));
+
+        $tariffWinterStart = clone ($now)->add(new DateInterval('P3D'));
+        $tariffWinterEnd = clone ($now)->add(new DateInterval('P4D'));
+
+        $tariffSummer = new Tariff($tariffSummerStart, $tariffSummerEnd, 100.0, 'Summer');
+        $tariffWinter = new Tariff($tariffWinterStart, $tariffWinterEnd, 50.0, 'Winter');
+
+        return array($tariffSummer, $tariffWinter);
+    }
 }

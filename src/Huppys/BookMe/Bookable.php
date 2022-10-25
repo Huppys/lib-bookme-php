@@ -7,6 +7,7 @@ use DateTime;
 use DateTimeImmutable;
 use Error;
 use Exception;
+use InvalidArgumentException;
 use When\When;
 
 class Bookable implements Buildable {
@@ -22,8 +23,32 @@ class Bookable implements Buildable {
         $this->_id = $id;
         $this->_title = $title;
         $this->_taxAmount = $taxAmount;
-        // TODO: validate tariffs for holes between one and next tariff
-        $this->_tariffs = $tariffs;
+
+        if (self::hasValidTariffs($tariffs)) {
+            $this->_tariffs = $tariffs;
+        }
+    }
+
+    /**
+     * @param Tariff[] $tariffs
+     * @return bool
+     */
+    private static function hasValidTariffs(array $tariffs): bool {
+        for ($i = 0; $i < count($tariffs) - 1; $i++) {
+
+            $currentTariff = $tariffs[$i];
+            $nextTariff = $tariffs[$i + 1];
+
+            if ($currentTariff->get_end()->diff($nextTariff->get_start())->d != 1) {
+                throw new InvalidArgumentException(
+                    sprintf(
+                        "The date interval between tariff %s and %s is more than one day.",
+                        $currentTariff->get_title(), $nextTariff->get_title()
+                    )
+                );
+            }
+        }
+        return true;
     }
 
     /**

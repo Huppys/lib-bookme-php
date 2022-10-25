@@ -7,6 +7,8 @@ use Exception;
 use Huppys\BookMe\Address;
 use Huppys\BookMe\Bookable;
 use Huppys\BookMe\tests\Builder\Builder;
+use Huppys\BookMe\tests\Builder\TariffBuilder;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class BookableTest extends TestCase {
@@ -39,6 +41,7 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnAddress(): void {
+        // TODO: Move address to contructor and write AddressBuilder
         $address = new Address("Berlin", "Lange Straße", "44", "10409");
         $this->bookableEntity->set_address($address);
         $this->assertInstanceOf(Address::class, $this->bookableEntity->get_address());
@@ -58,5 +61,15 @@ final class BookableTest extends TestCase {
      */
     public function shouldReturnTariff(): void {
         $this->assertIsArray($this->bookableEntity->get_tariffs());
+    }
+
+    /**
+     * @test
+     * @return void
+     * @throws Exception
+     */
+    public function shouldThrowExceptionForInvalidTariffs(): void {
+        $this->expectException(InvalidArgumentException::class);
+        new Bookable(1, 1.0, TariffBuilder::getTariffsWithDateGap(), "TestBookableTitle");
     }
 }

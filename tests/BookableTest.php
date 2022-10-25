@@ -3,10 +3,20 @@ declare(strict_types=1);
 
 namespace Huppys\BookMe\tests;
 
+use Exception;
 use Huppys\BookMe\Address;
 use Huppys\BookMe\Bookable;
+use Huppys\BookMe\tests\Builder\Builder;
+use PHPUnit\Framework\TestCase;
 
-final class BookableTest extends ReservationBaseTest {
+final class BookableTest extends TestCase {
+
+    /**
+     * @throws Exception
+     */
+    public function setUp(): void {
+        $this->bookableEntity = Builder::a('Bookable');
+    }
 
     /**
      * @test
@@ -39,7 +49,7 @@ final class BookableTest extends ReservationBaseTest {
      * @return void
      */
     public function shouldReturnTitle(): void {
-        $this->assertEquals($this->_bookableTitle, $this->bookableEntity->get_title());
+        $this->assertNotNull($this->bookableEntity->get_title());
     }
 
     /**

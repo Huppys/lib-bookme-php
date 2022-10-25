@@ -14,30 +14,6 @@ class ReservationTest extends ReservationBaseTest {
      * @test
      * @return void
      */
-    public function shouldSetCheckInDate(): void {
-        $this->assertEquals($this->checkInDate, $this->reservation->get_checkInDate());
-    }
-
-    /**
-     * @test
-     * @return void
-     */
-    public function shouldSetCheckOutDate(): void {
-        $this->assertEquals($this->checkOutDate, $this->reservation->get_checkOutDate());
-    }
-
-    /**
-     * @test
-     * @return void
-     */
-    public function shouldSetBookableEntity(): void {
-        $this->assertEquals($this->bookableEntity, $this->reservation->get_bookableEntity());
-    }
-
-    /**
-     * @test
-     * @return void
-     */
     public function shouldCreateReservationAsCreated(): void {
         $this->assertEquals(ReservationStatus::Created, $this->reservation->get_status());
     }

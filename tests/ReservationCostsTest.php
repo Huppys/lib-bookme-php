@@ -12,7 +12,12 @@ final class ReservationCostsTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldCalculateReservationCostsForTwoDays(): void {
-        $this->assertEquals(($this->_priceSummerTariff + $this->_priceWinterTariff) * (1.0 + ($this->_bookableTaxAmount / 100)), $this->reservation->calculateCosts());
+        $this->assertEquals(
+            (
+                $this->reservation->get_bookableEntity()->get_tariffs()[0]->get_price() +
+                $this->reservation->get_bookableEntity()->get_tariffs()[1]->get_price()
+            ) * (1.0 + ($this->reservation->get_bookableEntity()->get_taxAmount() / 100)), $this->reservation->calculateCosts()
+        );
     }
 
 }

@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class GuestTest extends TestCase {
 
-    private object $_guest;
+    private Guest $_guest;
 
     /**
      * @throws Exception

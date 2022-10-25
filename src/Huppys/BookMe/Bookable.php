@@ -9,7 +9,7 @@ use Error;
 use Exception;
 use When\When;
 
-class Bookable {
+class Bookable implements Buildable {
     private int $_id;
     private string $_title;
     private array $_rooms = [Room::class];

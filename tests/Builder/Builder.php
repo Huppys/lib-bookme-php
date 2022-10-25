@@ -11,7 +11,7 @@ class Builder {
     /**
      * @throws Exception
      */
-    public static function a(string $className): object {
+    public static function a(string $className): mixed {
         if (!self::entityClassIsBuildable($className)) {
             throw new Exception('Entity class does not exist.');
         }
@@ -36,7 +36,7 @@ class Builder {
      * @throws Exception
      */
     public static function entityClassIsBuildable(string $className): bool {
-        $entityClassDirPath = '../src/Huppys/BookMe/';
+        $entityClassDirPath = './src/Huppys/BookMe/';
         $entityClassBasePath = $entityClassDirPath . $className . '.php';
         if (file_exists($entityClassBasePath)) {
             return self::entityClassImplementsBuildable($className);
@@ -69,7 +69,7 @@ class Builder {
      * @throws Exception
      */
     public static function builderClassExists(string $className): bool {
-        $testBuildersPath = '../tests/Builder/';
+        $testBuildersPath = './tests/Builder/';
         $builderBasePath = $className . 'Builder.php';
         $builderPath = $testBuildersPath . $builderBasePath;
         if (file_exists($builderPath)){

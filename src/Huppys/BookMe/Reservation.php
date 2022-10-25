@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use Error;
 use Exception;
 
-class Reservation {
+class Reservation implements Buildable {
 
     private DateTimeImmutable $_checkInDate;
     private DateTimeImmutable $_checkOutDate;

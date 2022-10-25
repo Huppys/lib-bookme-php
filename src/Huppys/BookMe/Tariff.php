@@ -4,7 +4,7 @@ namespace Huppys\BookMe;
 
 use DateTimeImmutable;
 
-class Tariff {
+class Tariff implements Buildable {
     private DateTimeImmutable $_start;
     private DateTimeImmutable $_end;
     private float $_price;

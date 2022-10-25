@@ -15,7 +15,7 @@ class ReservationBuilder extends BaseBuilder {
         /**
          * @depends BookableBuilder
          */
-        $this->reservation = new Reservation($this->checkInDate, $this->checkOutDate, Builder::a('Bookable'));
+        $this->reservation = new Reservation(1, $this->checkInDate, $this->checkOutDate, Builder::a('Bookable'));
 
         $this->setEntity($this->reservation);
     }

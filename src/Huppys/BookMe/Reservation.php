@@ -10,18 +10,20 @@ use InvalidArgumentException;
 
 class Reservation implements Buildable {
 
+    private int $_id;
     private DateTimeImmutable $_checkInDate;
     private DateTimeImmutable $_checkOutDate;
     private Bookable $_bookableEntity;
     private ReservationStatus $_status;
     private float $_costsInclTaxes = 0;
 
-    function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity) {
+    function __construct(int $id, DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity) {
 
         if (!$this->checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
             throw new InvalidArgumentException("Check-in date is not after Check-out date");
         }
 
+        $this->_id = $id;
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
@@ -35,7 +37,7 @@ class Reservation implements Buildable {
         if ($this->get_status() == ReservationStatus::Created) {
             $this->set_status(ReservationStatus::Confirmed);
         } else {
-            throw new InvalidArgumentException("Unexpected value for reservation status");
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage());
         }
     }
 
@@ -46,7 +48,7 @@ class Reservation implements Buildable {
         if ($this->_status == ReservationStatus::Created) {
             $this->set_status(ReservationStatus::Rejected);
         } else {
-            throw new InvalidArgumentException("Unexpected value for reservation status");
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage());
         }
     }
 
@@ -57,7 +59,7 @@ class Reservation implements Buildable {
         if ($this->_status == ReservationStatus::Paid) {
             $this->set_status(ReservationStatus::Ended);
         } else {
-            throw new InvalidArgumentException("Unexpected value for reservation status");
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage());
         }
     }
 
@@ -68,7 +70,18 @@ class Reservation implements Buildable {
         if ($this->_status == ReservationStatus::Confirmed) {
             $this->set_status(ReservationStatus::Paid);
         } else {
-            throw new InvalidArgumentException("Unexpected value for reservation status");
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage());
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function markAsCanceled(): void {
+        if ($this->_status == ReservationStatus::Confirmed || $this->_status == ReservationStatus::Paid) {
+            $this->set_status(ReservationStatus::Canceled);
+        } else {
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage());
         }
     }
 
@@ -125,5 +138,26 @@ class Reservation implements Buildable {
      */
     public function checkInDateIsBeforeCheckOutDate(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate): bool {
         return $checkInDate->getTimestamp() < $checkOutDate->getTimestamp();
+    }
+
+    /**
+     * @return int
+     */
+    public function get_id(): int {
+        return $this->_id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function set_id(int $id): void {
+        $this->_id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function reservationStatusExceptionMessage(): string {
+        return sprintf("Unexpected value for reservation status for reservation with id %s", $this->get_id());
     }
 }

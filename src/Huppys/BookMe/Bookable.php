@@ -23,10 +23,7 @@ class Bookable implements Buildable {
         $this->_id = $id;
         $this->_title = $title;
         $this->_taxAmount = $taxAmount;
-
-        if (self::hasValidTariffs($tariffs)) {
-            $this->_tariffs = $tariffs;
-        }
+        $this->setTariffs($tariffs);
     }
 
     /**
@@ -139,5 +136,14 @@ class Bookable implements Buildable {
 
     public function get_tariffs(): array {
         return $this->_tariffs;
+    }
+
+    /**
+     * @param array $tariffs
+     */
+    public function setTariffs(array $tariffs): void {
+        if (self::hasValidTariffs($tariffs)) {
+            $this->_tariffs = $tariffs;
+        }
     }
 }

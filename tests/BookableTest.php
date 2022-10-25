@@ -41,9 +41,6 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnAddress(): void {
-        // TODO: Move address to contructor and write AddressBuilder
-        $address = new Address("Berlin", "Lange Straße", "44", "10409");
-        $this->bookableEntity->set_address($address);
         $this->assertInstanceOf(Address::class, $this->bookableEntity->get_address());
     }
 
@@ -70,6 +67,6 @@ final class BookableTest extends TestCase {
      */
     public function shouldThrowExceptionForInvalidTariffs(): void {
         $this->expectException(InvalidArgumentException::class);
-        new Bookable(1, 1.0, TariffBuilder::getTariffsWithDateGap(), "TestBookableTitle");
+        new Bookable(1, 1.0, TariffBuilder::getTariffsWithDateGap(), 'TestBookableTitle', Builder::a('Address'));
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Huppys\BookMe;
 
-class Address {
+class Address implements Buildable {
     private string $_city;
     private string $_street;
     private string $_number;

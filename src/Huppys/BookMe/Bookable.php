@@ -19,11 +19,12 @@ class Bookable implements Buildable {
     /* @var $_tariffs Tariff[] */
     private array $_tariffs;
 
-    function __construct(int $id, float $taxAmount, array $tariffs, string $title = "") {
+    function __construct(int $id, float $taxAmount, array $tariffs, string $title, Address $address) {
         $this->_id = $id;
         $this->_title = $title;
         $this->_taxAmount = $taxAmount;
         $this->setTariffs($tariffs);
+        $this->_address = $address;
     }
 
     /**

@@ -12,7 +12,7 @@ class BookableBuilder extends BaseBuilder {
         /**
          * @depends TariffBuilder
          */
-        $bookable = new Bookable(1, 7.0, Builder::a('Tariff'), 'Ferienhaus Seepferdchen');
+        $bookable = new Bookable(1, 7.0, Builder::a('Tariff'), 'Ferienhaus Seepferdchen', Builder::a('Address'));
 
         $this->setEntity($bookable);
 

@@ -13,6 +13,12 @@ To use test data for tests in general, we use ``Builder`` classes to generate pr
 to create a builder class like `GuestBuilder` to create a test instance of the class `Guest` and pre-populate this
 instance with dummy data. ``Guest`` is seen as a testable entity class and must implement the `Buildable` interface.
 
+## Environment variables
+
+The variable ``PROJECT_ROOT`` is set to the containers project root. This is by default defined by the underlying php 
+image as ``/opt/project``. The aforementioned environment variable is necessary to run all unit tests and to run 
+sole tests.
+
 ## Bullshit bingo section
 
 * Made for PHP >= 8.1.10

@@ -36,7 +36,7 @@ class Builder {
      * @throws Exception
      */
     public static function entityClassIsBuildable(string $className): bool {
-        $entityClassDirPath = './src/Huppys/BookMe/';
+        $entityClassDirPath = $_ENV["PROJECT_ROOT"] . '/src/Huppys/BookMe/';
         $entityClassBasePath = $entityClassDirPath . $className . '.php';
         if (file_exists($entityClassBasePath)) {
             return self::entityClassImplementsBuildable($className);
@@ -69,7 +69,7 @@ class Builder {
      * @throws Exception
      */
     public static function builderClassExists(string $className): bool {
-        $testBuildersPath = './tests/Builder/';
+        $testBuildersPath = $_ENV["PROJECT_ROOT"] . '/tests/Builder/';
         $builderBasePath = $className . 'Builder.php';
         $builderPath = $testBuildersPath . $builderBasePath;
         if (file_exists($builderPath)){

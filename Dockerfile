@@ -23,4 +23,6 @@ RUN chmod +x /opt/src/composer/install-composer.sh
 RUN /opt/src/composer/install-composer.sh
 RUN ln -nfs /usr/local/bin/composer.phar /usr/local/bin/composer
 
+ENV PROJECT_ROOT="/opt/project"
+
 EXPOSE 9003

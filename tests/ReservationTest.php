@@ -7,7 +7,7 @@ use Exception;
 use Huppys\BookMe\ReservationStatus;
 use InvalidArgumentException;
 
-class ReservationTest extends ReservationBaseTest {
+final class ReservationTest extends ReservationBaseTest {
 
     /**
      * @test

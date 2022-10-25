@@ -8,7 +8,7 @@ use Huppys\BookMe\Guest;
 use Huppys\BookMe\tests\Builder\Builder;
 use PHPUnit\Framework\TestCase;
 
-class GuestTest extends TestCase {
+final class GuestTest extends TestCase {
 
     private Guest $_guest;
 

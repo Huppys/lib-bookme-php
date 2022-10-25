@@ -3,14 +3,15 @@
 ## What we need
 
 ### Architecture
-* reservation entites
-  * reservation states
-* building entities
-  * with rooms 
+* DONE reservation entites
+  * DONE reservation states
+* DONE building/bookable entities
+  * DONE with rooms 
 * room entities
 	* costs by seasons
-* taxes
-* tariffs
+* DONE taxes
+* DONE tariffs
+* extras/services
 
 ### web app architecture
 * Data access layer

@@ -27,7 +27,7 @@ class ReservationBaseTest extends TestCase {
      */
     public function setUp(): void {
         /**
-         * @depends ReservationBuilder
+         * @uses ReservationBuilder
          */
         $this->reservation = Builder::a('Reservation');
     }

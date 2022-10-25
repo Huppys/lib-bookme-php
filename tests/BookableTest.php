@@ -6,6 +6,7 @@ namespace Huppys\BookMe\tests;
 use Exception;
 use Huppys\BookMe\Address;
 use Huppys\BookMe\Bookable;
+use Huppys\BookMe\tests\Builder\BookableBuilder;
 use Huppys\BookMe\tests\Builder\Builder;
 use Huppys\BookMe\tests\Builder\TariffBuilder;
 use InvalidArgumentException;
@@ -17,7 +18,10 @@ final class BookableTest extends TestCase {
      * @throws Exception
      */
     public function setUp(): void {
-        $this->bookableEntity = Builder::a('Bookable');
+        /**
+         * @uses BookableBuilder
+         */
+        $this->bookable = Builder::a('Bookable');
     }
 
     /**
@@ -25,7 +29,7 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnInstanceOfBookable(): void {
-        $this->assertInstanceOf(Bookable::class, $this->bookableEntity);
+        $this->assertInstanceOf(Bookable::class, $this->bookable);
     }
 
     /**
@@ -33,7 +37,7 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnRoomsAsAnArray(): void {
-        $this->assertIsArray($this->bookableEntity->get_rooms());
+        $this->assertIsArray($this->bookable->get_rooms());
     }
 
     /**
@@ -41,7 +45,7 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnAddress(): void {
-        $this->assertInstanceOf(Address::class, $this->bookableEntity->get_address());
+        $this->assertInstanceOf(Address::class, $this->bookable->get_address());
     }
 
     /**
@@ -49,7 +53,7 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnTitle(): void {
-        $this->assertNotNull($this->bookableEntity->get_title());
+        $this->assertNotNull($this->bookable->get_title());
     }
 
     /**
@@ -57,7 +61,7 @@ final class BookableTest extends TestCase {
      * @return void
      */
     public function shouldReturnTariff(): void {
-        $this->assertIsArray($this->bookableEntity->get_tariffs());
+        $this->assertIsArray($this->bookable->get_tariffs());
     }
 
     /**

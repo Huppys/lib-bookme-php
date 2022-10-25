@@ -16,8 +16,9 @@ class Reservation implements Buildable {
     private Bookable $_bookableEntity;
     private ReservationStatus $_status;
     private float $_costsInclTaxes = 0;
+    private array $_services;
 
-    function __construct(int $id, DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity) {
+    function __construct(int $id, DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, array $services) {
 
         if (!$this->checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
             throw new InvalidArgumentException("Check-in date is not after Check-out date");
@@ -28,6 +29,7 @@ class Reservation implements Buildable {
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
         $this->_status = ReservationStatus::Created;
+        $this->_services = $services;
     }
 
     /**
@@ -159,5 +161,19 @@ class Reservation implements Buildable {
      */
     public function reservationStatusExceptionMessage(): string {
         return sprintf("Unexpected value for reservation status for reservation with id %s", $this->get_id());
+    }
+
+    /**
+     * @return array
+     */
+    public function get_services(): array {
+        return $this->_services;
+    }
+
+    /**
+     * @param array $services
+     */
+    public function set_services(array $services): void {
+        $this->_services = $services;
     }
 }

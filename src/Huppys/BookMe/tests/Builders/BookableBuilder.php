@@ -1,17 +1,16 @@
 <?php
 
-namespace Huppys\BookMe\tests\Builder;
+namespace Huppys\BookMe\tests\Builders;
 
 use Exception;
 use Huppys\BookMe\Bookable;
+use Huppys\BookMe\tests\Builder\Builder;
 
 class BookableBuilder extends BaseBuilder {
     /**
      * @throws Exception
      */
     public function __construct() {
-
-        parent::__construct();
 
         /**
          * @uses TariffBuilder

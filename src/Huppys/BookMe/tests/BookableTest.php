@@ -6,9 +6,8 @@ namespace Huppys\BookMe\tests;
 use Exception;
 use Huppys\BookMe\Address;
 use Huppys\BookMe\Bookable;
-use Huppys\BookMe\tests\Builder\BookableBuilder;
 use Huppys\BookMe\tests\Builder\Builder;
-use Huppys\BookMe\tests\Builder\TariffBuilder;
+use Huppys\BookMe\tests\Builders\TariffBuilder;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -19,7 +18,7 @@ final class BookableTest extends TestCase {
      */
     public function setUp(): void {
         /**
-         * @uses BookableBuilder
+         * @uses \Huppys\BookMe\tests\Builders\BookableBuilder
          */
         $this->bookable = Builder::a('Bookable');
     }

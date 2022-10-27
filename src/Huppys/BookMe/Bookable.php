@@ -5,7 +5,6 @@ namespace Huppys\BookMe;
 
 use DateTime;
 use DateTimeImmutable;
-use Error;
 use Exception;
 use InvalidArgumentException;
 use When\When;
@@ -116,7 +115,7 @@ class Bookable implements Buildable {
 
         $errorMessage = sprintf("No matching tariffs found for dates from %s to %s", $startDate->format('d.m.Y'), $endDate->format('d.m.Y'));
 
-        throw new Error($errorMessage);
+        throw new Exception($errorMessage);
     }
 
     /**

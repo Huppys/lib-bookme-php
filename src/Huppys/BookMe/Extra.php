@@ -2,7 +2,7 @@
 
 namespace Huppys\BookMe;
 
-class Service implements Buildable {
+class Extra implements Buildable {
 
     private int $_id;
     private string $_title;

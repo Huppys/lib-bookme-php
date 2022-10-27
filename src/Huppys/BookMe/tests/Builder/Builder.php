@@ -22,7 +22,7 @@ class Builder {
 
         try {
             $builderName = $className . 'Builder';
-            $entityClassPath = 'Huppys\\BookMe\\tests\\Builder\\' . $builderName;
+            $entityClassPath = 'Huppys\\BookMe\\tests\\Builders\\' . $builderName;
             $instance = new $entityClassPath();
             return $instance->getEntity();
         } catch (Exception $e) {
@@ -69,7 +69,7 @@ class Builder {
      * @throws Exception
      */
     public static function builderClassExists(string $className): bool {
-        $testBuildersPath = $_ENV["PROJECT_ROOT"] . '/tests/Builder/';
+        $testBuildersPath = $_ENV["PROJECT_ROOT"] . '/src/Huppys/BookMe/tests/Builders/';
         $builderBasePath = $className . 'Builder.php';
         $builderPath = $testBuildersPath . $builderBasePath;
         if (file_exists($builderPath)){

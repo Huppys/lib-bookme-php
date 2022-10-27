@@ -2,16 +2,16 @@
 
 namespace Huppys\BookMe\tests;
 
-use Huppys\BookMe\Service;
+use Huppys\BookMe\Extra;
 use Huppys\BookMe\tests\Builder\Builder;
 use PHPUnit\Framework\TestCase;
 
-class ServiceTest extends TestCase {
+class ExtraTest extends TestCase {
 
-    protected Service $_service;
+    protected Extra $_service;
 
     public function setUp(): void {
-        $this->_service = Builder::a('Service');
+        $this->_service = Builder::a('Extra');
     }
 
     /**
@@ -19,6 +19,6 @@ class ServiceTest extends TestCase {
      * @return void
      */
     public function shouldBeInstanceOfService() : void {
-        $this->assertInstanceOf(Service::class, $this->_service);
+        $this->assertInstanceOf(Extra::class, $this->_service);
     }
 }

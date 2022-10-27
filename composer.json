@@ -9,8 +9,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Huppys\\BookMe\\": "src/Huppys/BookMe",
-            "Huppys\\BookMe\\tests\\": "tests/"
+            "Huppys\\BookMe\\": "src/Huppys/BookMe"
         }
     },
     "authors": [

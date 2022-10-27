@@ -1,35 +1,31 @@
 <?php
 
-namespace Huppys\BookMe\tests\Builder;
+namespace Huppys\BookMe\tests\Builders;
 
 use DateInterval;
 use DateTimeImmutable;
 use Exception;
 use Huppys\BookMe\Tariff;
+use Huppys\BookMe\tests\Builder\CheckInCheckOutDateProvider;
 
 class TariffBuilder extends BaseBuilder {
+
+    use CheckInCheckOutDateProvider;
+
     /**
      * @throws Exception
      */
     public function __construct() {
-        parent::__construct();
-
-        $date_interval = 'P2D';
-        $reservationDuration = new DateInterval($date_interval);
-
-        $now = DateTimeImmutable::createFromFormat('Y-m-d|', date('Y-m-d'));
-        $this->checkInDate = clone($now);
-        $this->checkOutDate = clone ($now)->add($reservationDuration);
 
         // Summer tariff starts one day before checkin
-        $tariffSummerStart = clone ($this->checkInDate)->sub(new DateInterval('P1D'));
+        $tariffSummerStart = clone ($this->get_checkInDate())->sub(new DateInterval('P2D'));
         // Summer tariff ends on checkin day, so checkin is in summer tariff
-        $tariffSummerEnd = clone($this->checkInDate);
+        $tariffSummerEnd = clone($this->get_checkInDate());
 
         // Winter tariff starts one after summer tariff end
-        $tariffWinterStart = clone ($tariffSummerEnd)->add(new DateInterval('P1D'));
+        $tariffWinterStart = clone($tariffSummerEnd)->add(new DateInterval('P1D'));
         // Summer tariff ends one day after checkout
-        $tariffWinterEnd = clone ($this->checkOutDate)->add(new DateInterval('P1D'));
+        $tariffWinterEnd = clone ($tariffWinterStart)->add(new DateInterval('P1D'));
 
         $tariffSummer = new Tariff($tariffSummerStart, $tariffSummerEnd, 100.0, 'Summer');
         $tariffWinter = new Tariff($tariffWinterStart, $tariffWinterEnd, 50.0, 'Winter');

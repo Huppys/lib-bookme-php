@@ -1,13 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Huppys\BookMe\tests\Builder;
+namespace Huppys\BookMe\tests\Builders;
 
 use Huppys\BookMe\Guest;
 
 class GuestBuilder extends BaseBuilder {
 
     public function __construct() {
+
         $guest = new Guest(
             'TestFirstname',
             'TestLastname',

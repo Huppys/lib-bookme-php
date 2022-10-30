@@ -16,9 +16,9 @@ class Reservation implements Buildable {
     private Bookable $_bookableEntity;
     private ReservationStatus $_status;
     private float $_costsInclTaxes = 0;
-    private array $_services;
+    private ?array $_extras;
 
-    function __construct(int $id, DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, array $services) {
+    function __construct(int $id, DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, ?array $extras) {
 
         if (!$this->checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
             throw new InvalidArgumentException("Check-in date is not after Check-out date");
@@ -29,7 +29,7 @@ class Reservation implements Buildable {
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
         $this->_status = ReservationStatus::Created;
-        $this->_services = $services;
+        $this->_extras = $extras;
     }
 
     /**
@@ -132,7 +132,19 @@ class Reservation implements Buildable {
             $this->_costsInclTaxes = $this->_bookableEntity->calculateCosts($this->_checkInDate, $this->_checkOutDate);
         }
 
+        if ($this->hasBookedExtras()) {
+            $this->_costsInclTaxes += $this->sumExtraCosts($this->get_extras());
+        }
+
         return $this->_costsInclTaxes;
+    }
+
+    /**
+     * @param Extra[] $extras
+     * @return array|null
+     */
+    function sumExtraCosts(array $extras): ?float {
+        return array_sum(array_map(fn($extra):float => $extra->get_costs(), $extras));
     }
 
     /**
@@ -164,16 +176,23 @@ class Reservation implements Buildable {
     }
 
     /**
-     * @return array
+     * @return null|array
      */
-    public function get_services(): array {
-        return $this->_services;
+    public function get_extras(): ?array {
+        return $this->_extras;
     }
 
     /**
-     * @param array $services
+     * @param ?array $extras
      */
-    public function set_services(array $services): void {
-        $this->_services = $services;
+    public function set_extras(?array $extras): void {
+        $this->_extras = $extras;
+    }
+
+    /**
+     * @return bool
+     */
+    private function hasBookedExtras(): bool {
+        return $this->get_extras() != null;
     }
 }

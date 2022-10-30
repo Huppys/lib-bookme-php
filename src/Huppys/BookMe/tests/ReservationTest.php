@@ -83,6 +83,5 @@ final class ReservationTest extends ReservationBaseTest {
         $this->reservation->markAsConfirmed();
         $this->reservation->markAsCanceled();
         $this->assertEquals(ReservationStatus::Canceled, $this->reservation->get_status());
-
     }
 }

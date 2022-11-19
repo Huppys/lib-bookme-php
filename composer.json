@@ -20,7 +20,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "tplaner/when": "^v3.1.5",
-        "ext-ds": "*"
+        "php": ">=8.1",
+        "ext-ds": "*",
+        "tplaner/when": "^v3.1.5"
     }
 }

@@ -23,7 +23,7 @@
 
 ### Additional features
 * swagger ui
-* availability overview
+* DONE availability overview
 * email templates
 * booking form
 	* Personal data

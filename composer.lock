@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca4c56c21689ca9d1de254af484593db",
+    "content-hash": "db5b9d0e6f006a76ab6027278d77a04e",
     "packages": [
         {
             "name": "tplaner/when",
@@ -1796,9 +1796,12 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "ext-ds": "*",
-        "php": ">=8.1"
+        "php": ">=8.1",
+        "ext-ds": "*"
     },
     "platform-dev": [],
+    "platform-overrides": {
+        "php": "8.1"
+    },
     "plugin-api-version": "2.3.0"
 }

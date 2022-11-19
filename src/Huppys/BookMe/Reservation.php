@@ -148,6 +148,8 @@ class Reservation implements Buildable {
     }
 
     /**
+     * @param DateTimeImmutable $checkInDate
+     * @param DateTimeImmutable $checkOutDate
      * @return bool
      */
     public function checkInDateIsBeforeCheckOutDate(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate): bool {

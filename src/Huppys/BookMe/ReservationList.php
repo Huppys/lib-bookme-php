@@ -54,11 +54,13 @@ class ReservationList {
      * @throws Exception
      */
     private static function startAndEndAreInDateRange(Reservation $reservation, DateTimeImmutable $start, DateTimeImmutable $end): bool {
+
+        // create occurrences lookup from the $start ...
         $when = new When(DateTime::createFromImmutable($start)->format('Y-m-d'));
+        // ... until the $end of the time range
         $when->freq('daily')->until(DateTime::createFromImmutable($end));
 
-        $occurrences = $when->getOccurrencesBetween($reservation->get_checkInDate(), $reservation->get_checkOutDate());
-
-        return count($occurrences) > 0;
+        // find if at least on day between checkin date and the checkout date occurs in the occurrence lookup time range
+        return count($when->getOccurrencesBetween($reservation->get_checkInDate(), $reservation->get_checkOutDate())) > 0;
     }
 }

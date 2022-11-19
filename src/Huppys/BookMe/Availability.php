@@ -3,17 +3,14 @@
 namespace Huppys\BookMe;
 
 use DateInterval;
-use DateTime;
 use DateTimeImmutable;
 use Exception;
-use When\When;
 
 class Availability implements Buildable {
 
     private Bookable $_bookable;
     private DateTimeImmutable $_start;
     private DateTimeImmutable $_end;
-    private array $_availableDates;
 
 
     public function __construct(Bookable $bookable, DateTimeImmutable $start, DateTimeImmutable $end) {
@@ -22,43 +19,48 @@ class Availability implements Buildable {
         $this->_end = $end;
     }
 
-
     /**
      * @param Reservation[] $reservationList
      * @param DateTimeImmutable $start
      * @param DateTimeImmutable $end
-     * @return array|null
+     * @return array
      * @throws Exception
      */
-    private function filterAvailableDates(?array $reservationList, DateTimeImmutable $start, DateTimeImmutable $end): ?array {
+    private function filterAvailableDates(?array $reservationList, DateTimeImmutable $start, DateTimeImmutable $end): array {
 
-        $availableDates = [];
+        // create empty array for possible unreserved dates
+        $unreservedDates = [];
 
+        // iterate reservations
         foreach ($reservationList as $reservation) {
 
-            $when = new When(DateTime::createFromImmutable($start)->format('Y-m-d'));
-            $when->freq('daily')->until(DateTime::createFromImmutable($end))->generateOccurrences();
-
-            if ($when->startDate->getTimestamp() < $reservation->get_checkInDate()->getTimestamp() && $when->until->getTimeStamp() >
+            // if the checkin date after before the start date and checkout is before the end date ...
+            if ($start->getTimestamp() < $reservation->get_checkInDate()->getTimestamp() && $end->getTimeStamp() >
             $reservation->get_checkOutDate()->getTimestamp()) {
 
-                $availableDates[] = array(
+                // ... add a new unreserved date that starts at $start and ends the day before checkin date
+                $unreservedDates[] = array(
                     'start' => $start,
                     'end' => $reservation->get_checkInDate()->sub(new DateInterval('P1D'))
                 );
             }
+
+            // overwrite the start with the date of one day after the checkout date so we start the next iteration there
             $start = $reservation->get_checkOutDate()->add(new DateInterval('P1D'));
-
-            unset($when);
         }
 
+        // if there is still time left in the requested time range ...
         if ($start->getTimestamp() <= $end->getTimestamp()) {
-            $availableDates[] = array('start' => $start, 'end' => $end);
+            // ... add this time range as well to the "unreserved dates"
+            $unreservedDates[] = array('start' => $start, 'end' => $end);
         }
 
-        return $availableDates;
+        return $unreservedDates;
     }
 
+    /**
+     * @throws Exception
+     */
     public function get_availabilityDates(): ?array {
 
         // get reserved dates for bookable after $start and before $end
@@ -69,8 +71,22 @@ class Availability implements Buildable {
             return null;
         }
 
-        // find occurences where reserved dates are not present after $start and before $end
+        // find occurrences where reserved dates are not present after $start and before $end
         return $this->filterAvailableDates($reservationList, $this->_start, $this->_end);
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function get_start(): DateTimeImmutable {
+        return $this->_start;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function get_end(): DateTimeImmutable {
+        return $this->_end;
     }
 
 }

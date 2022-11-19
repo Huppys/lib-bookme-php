@@ -11,7 +11,8 @@
 	* costs by seasons
 * DONE taxes
 * DONE tariffs
-* extras/services
+* DONE extras/services
+  * DONE with price calculation
 
 ### web app architecture
 * Data access layer
@@ -34,6 +35,6 @@
 * invoice generation
 
 ## Quality level
-* TDD
+* BDD
 * compatability to latest php major release version
 * compatability to all php minor release versions

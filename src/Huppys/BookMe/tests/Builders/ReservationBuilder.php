@@ -26,6 +26,9 @@ class ReservationBuilder extends BaseBuilder {
         $this->setEntity($reservation);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function reservationWithExtra(): Reservation {
         /**
          * @uses BookableBuilder

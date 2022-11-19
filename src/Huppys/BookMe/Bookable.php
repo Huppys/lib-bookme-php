@@ -101,7 +101,6 @@ class Bookable implements Buildable {
 
         $costs = 0.0;
 
-        /* @var $tariff Tariff */
         foreach ($this->_tariffs as $tariff) {
             $occurrences = $this->getDateOccurrencesInTariff($startDate, $endDate, $tariff);
             if ($occurrences) {
@@ -121,9 +120,9 @@ class Bookable implements Buildable {
     /**
      * @throws Exception
      */
-    private function getDateOccurrencesInTariff(DateTimeImmutable $startDate, DateTimeImmutable $endDate, Tariff $tariff): array {
-        $when = new When(DateTime::createFromImmutable($startDate)->format('Y-m-d'));
-        $when->freq('daily')->until(DateTime::createFromImmutable($endDate));
+    private function getDateOccurrencesInTariff(DateTimeImmutable $start, DateTimeImmutable $end, Tariff $tariff): array {
+        $when = new When(DateTime::createFromImmutable($start)->format('Y-m-d'));
+        $when->freq('daily')->until(DateTime::createFromImmutable($end));
         return $when->getOccurrencesBetween(DateTime::createFromImmutable($tariff->get_start()), DateTime::createFromImmutable($tariff->get_end()));
     }
 

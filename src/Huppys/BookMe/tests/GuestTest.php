@@ -16,6 +16,9 @@ final class GuestTest extends TestCase {
      * @throws Exception
      */
     public function setUp(): void {
+        /**
+         * @uses GuestBuilder
+         */
         $this->_guest = Builder::a('Guest');
     }
 

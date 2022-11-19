@@ -10,17 +10,17 @@ use Huppys\BookMe\tests\Builder\Builder;
 
 class AvailabilityBuilder extends BaseBuilder {
 
+    use AvailabilityDateProvider;
+
     /**
      * @throws Exception
      */
     public function __construct() {
 
-        $availabilityDateProvider = new AvailabilityDateProvider();
-
         $availability = new Availability(
             Builder::a('Bookable'),
-            $availabilityDateProvider->get_AvailabilityStart(),
-            $availabilityDateProvider->get_AvailabilityEnd()
+            $this->get_AvailabilityStart(),
+            $this->get_AvailabilityEnd()
         );
 
         $this->setEntity($availability);

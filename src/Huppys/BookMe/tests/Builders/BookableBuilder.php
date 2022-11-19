@@ -14,6 +14,7 @@ class BookableBuilder extends BaseBuilder {
 
         /**
          * @uses TariffBuilder
+         * @uses AddressBuilder
          */
         $bookable = new Bookable(1, 7.0, Builder::a('Tariff'), 'Ferienhaus Seepferdchen', Builder::a('Address'));
 

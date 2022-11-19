@@ -23,8 +23,10 @@ class Builder {
         try {
             $builderName = $className . 'Builder';
             $entityClassPath = 'Huppys\\BookMe\\tests\\Builders\\' . $builderName;
+
             $instance = new $entityClassPath();
             return $instance->getEntity();
+
         } catch (Exception $e) {
             throw new Exception('Class ' . $entityClassPath . ' could no be instantiated.' . $e);
         }

@@ -26,6 +26,7 @@ class BuilderTest extends TestCase {
     }
 
     private function getFullNamespace($filename) {
+        var_dump($filename);
         $lines = file($filename);
         $array = preg_grep('/^namespace /', $lines);
         $namespaceLine = array_shift($array);
@@ -46,7 +47,7 @@ class BuilderTest extends TestCase {
     }
 
     private function getBuildableClasses(): array {
-        $filenames = $this->getFilenames('../../');
+        $filenames = $this->getFilenames($_ENV["PROJECT_ROOT"] . '/src/Huppys/BookMe');
 
         $buildableClasses = [];
 
@@ -72,8 +73,8 @@ class BuilderTest extends TestCase {
         return $buildableClasses;
     }
 
-    private function getBuilderClasses(): array {
-        $filenames = $this->getFilenames('../Builders');
+    private function getBuilderTestClasses(): array {
+        $filenames = $this->getFilenames($_ENV["PROJECT_ROOT"] . '/src/Huppys/BookMe/tests/Builders');
 
         foreach ($filenames as $filename) {
 
@@ -100,7 +101,7 @@ class BuilderTest extends TestCase {
      */
     public function shouldHaveBuilderForEveryClassImplementingBuildableInterface(): void {
 
-        $this->assertEquals(count($this->getBuildableClasses()), count($this->getBuilderClasses()));
+        $this->assertEquals(count($this->getBuildableClasses()), count($this->getBuilderTestClasses()));
 
     }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "huppys/book-me",
+    "name": "huppys/lib-bookme",
     "description": "Booking library",
     "type": "library",
     "require-dev": {
@@ -21,7 +21,8 @@
     "authors": [
         {
             "name": "Oliver Witzki",
-            "email": "oliver.witzki@chrono24.com"
+            "email": "projects@oliverwitzki.de",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "stable",

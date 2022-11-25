@@ -15,7 +15,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Huppys\\BookMe\\": "src/Huppys/BookMe"
+            "BookMe\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BookMe\\Tests\\": "tests/"
         }
     },
     "authors": [

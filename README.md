@@ -9,7 +9,8 @@
 
 ## Test data builder classes
 
-To use test data for tests in general, we use ``Builder`` classes to generate predefined test data. The concept is
+To use test data for tests in general, we use ``BuilderGenerator`` classes to generate predefined test data. The 
+concept is
 to create a builder class like `GuestBuilder` to create a test instance of the class `Guest` and pre-populate this
 instance with dummy data. ``Guest`` is seen as a testable entity class and must implement the `Buildable` interface.
 

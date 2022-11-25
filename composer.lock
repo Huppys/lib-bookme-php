@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa7dd214303811bca006eeaf3ee5b2f7",
+    "content-hash": "12cd965585146dc734bdd7e82f5032f1",
     "packages": [
         {
             "name": "tplaner/when",

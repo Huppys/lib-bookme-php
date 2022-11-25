@@ -1,6 +1,11 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run phpunit tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-    <TestRunner directory="$PROJECT_DIR$/src/Huppys/BookMe/tests" />
+    <CommandLine>
+      <PhpTestInterpreterSettings>
+        <option name="interpreterName" value="php-dev:latest" />
+      </PhpTestInterpreterSettings>
+    </CommandLine>
+    <TestRunner directory="$PROJECT_DIR$/tests" />
     <method v="2" />
   </configuration>
 </component>

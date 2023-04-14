@@ -1,0 +1,4 @@
+[submodule "docker"]
+	path = docker
+	url = git@github.com:Huppys/php-dev-docker.git
+	branch = main

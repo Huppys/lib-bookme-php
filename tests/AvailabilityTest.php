@@ -2,6 +2,7 @@
 
 namespace BookMe\Tests;
 
+use BookMe\Reservation;
 use DateInterval;
 use DateTimeImmutable;
 use Exception;
@@ -16,12 +17,12 @@ use PHPUnit\Framework\TestCase;
 
 class AvailabilityTest extends TestCase {
 
+    private Reservation $reservation;
+
     /**
      * @throws Exception
      */
     public function setUp(): void {
-        $this->now = DateTimeImmutable::createFromFormat('Y-m-d|', date('Y-m-d'));
-
         /**
          * @uses ReservationBuilder
          */

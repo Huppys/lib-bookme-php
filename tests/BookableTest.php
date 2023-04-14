@@ -13,6 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 final class BookableTest extends TestCase {
 
+    private Bookable $bookable;
+
     /**
      * @throws Exception
      */

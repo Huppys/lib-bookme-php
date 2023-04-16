@@ -18,7 +18,7 @@ class ReservationService {
         if ($reservation->get_status() == ReservationStatus::Created) {
             $reservation->set_status(ReservationStatus::Confirmed);
         } else {
-            throw new InvalidArgumentException($this->reservationStatusExceptionMessage(null));
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage($reservation->get_entityId()));
         }
     }
 
@@ -30,7 +30,7 @@ class ReservationService {
         if ($reservation->get_status() == ReservationStatus::Created) {
             $reservation->set_status(ReservationStatus::Rejected);
         } else {
-            throw new InvalidArgumentException($this->reservationStatusExceptionMessage(null));
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage($reservation->get_entityId()));
         }
     }
 
@@ -42,7 +42,7 @@ class ReservationService {
         if ($reservation->get_status() == ReservationStatus::Paid) {
             $reservation->set_status(ReservationStatus::Ended);
         } else {
-            throw new InvalidArgumentException($this->reservationStatusExceptionMessage(null));
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage($reservation->get_entityId()));
         }
     }
 
@@ -54,7 +54,7 @@ class ReservationService {
         if ($reservation->get_status() == ReservationStatus::Confirmed) {
             $reservation->set_status(ReservationStatus::Paid);
         } else {
-            throw new InvalidArgumentException($this->reservationStatusExceptionMessage(null));
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage($reservation->get_entityId()));
         }
     }
 
@@ -66,18 +66,15 @@ class ReservationService {
         if ($reservation->get_status() == ReservationStatus::Confirmed || $reservation->get_status() == ReservationStatus::Paid) {
             $reservation->set_status(ReservationStatus::Canceled);
         } else {
-            throw new InvalidArgumentException($this->reservationStatusExceptionMessage(null));
+            throw new InvalidArgumentException($this->reservationStatusExceptionMessage($reservation->get_entityId()));
         }
     }
-
-
-    // TODO: Move to validation logic
 
     /**
      * @param string $id
      * @return string
      */
-    private function reservationStatusExceptionMessage(string $id = "dummy"): string {
+    private function reservationStatusExceptionMessage(string $id): string {
         return sprintf("Unexpected value for reservation status for reservation with id %s", $id);
     }
 

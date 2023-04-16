@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace BookMe;
 
 use DateTimeImmutable;
-use InvalidArgumentException;
 
 class Reservation implements Buildable {
 
+    private string $entityId;
     private DateTimeImmutable $_checkInDate;
     private DateTimeImmutable $_checkOutDate;
     private Bookable $_bookableEntity;
@@ -16,13 +16,9 @@ class Reservation implements Buildable {
     private ?array $_extras;
     private Guest $guest;
 
-    function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, ?array $extras, Guest $guest) {
+    function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, ?array $extras, Guest $guest, string $entityId) {
 
-        // TODO: Move validation to validation logic
-        if (!$this->checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
-            throw new InvalidArgumentException("Check-in date is not after Check-out date");
-        }
-
+        $this->entityId = $entityId;
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;
@@ -30,8 +26,6 @@ class Reservation implements Buildable {
         $this->_extras = $extras;
         $this->guest = $guest;
     }
-
-
 
     /**
      * @return DateTimeImmutable
@@ -96,5 +90,12 @@ class Reservation implements Buildable {
      */
     public function get_guest(): Guest {
         return $this->guest;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_entityId(): string {
+        return $this->entityId;
     }
 }

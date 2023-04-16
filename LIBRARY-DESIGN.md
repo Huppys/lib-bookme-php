@@ -3,36 +3,27 @@
 ## What we need
 
 ### Architecture
-* DONE reservation entites
-  * DONE reservation states
-* DONE building/bookable entities
-  * DONE with rooms 
+* [x] reservation entites
+  * [x] reservation states
+* [x] building/bookable entities
+  * [x] with rooms 
 * room entities
 	* costs by seasons
-* DONE taxes
-* DONE tariffs
-* DONE extras/services
-  * DONE with price calculation
+* [x] taxes
+* [x] tariffs
+* [x] extras/services
+  * [x] with price calculation
 
 ### web app architecture
 * Data access layer
 * Domain layer / presentation layer separation
 * CSRF validation for all (form) requests
-* REST-API
+* JSON-API
+  * seperate public interface layer from storage layer
 * storage-wise encryption of PII
 
 ### Additional features
-* swagger ui
-* DONE availability overview
-* email templates
-* booking form
-	* Personal data
-	* additional information/remark
-	* bookable entity / room / cottage
-	* checkin date / checkout date
-	* service / cleaning fee
-* Multi-language support (i18n)
-* invoice generation
+* [x] availability overview
 
 ## Quality level
 * BDD

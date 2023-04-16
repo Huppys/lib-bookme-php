@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
+use BookMe\Service\ReservationService;
 use DateTimeImmutable;
 use Exception;
 use BookMe\Bookable;
@@ -17,12 +18,14 @@ class ReservationBaseTest extends TestCase {
     protected DateTimeImmutable $checkInDate;
     protected DateTimeImmutable $checkOutDate;
     protected Bookable $bookableEntity;
-
-
+    protected ReservationService $reservationService;
     /**
      * @throws Exception
      */
     public function setUp(): void {
+
+        $this->reservationService = new ReservationService();
+
         /**
          * @uses \BookMe\Tests\Builders\ReservationBuilder
          */

@@ -2,6 +2,7 @@
 
 namespace BookMe;
 
+use BookMe\Service\ReservationListService;
 use DateInterval;
 use DateTimeImmutable;
 use Exception;
@@ -65,7 +66,7 @@ class Availability implements Buildable {
 
         // get reserved dates for bookable after $start and before $end
         /** @var Reservation[] $reservationList */
-        $reservationList = ReservationList::getReservedDates($this->_bookable, $this->_start, $this->_end);
+        $reservationList = ReservationListService::getReservedDates($this->_bookable, $this->_start, $this->_end);
 
         if ($reservationList == null) {
             return null;

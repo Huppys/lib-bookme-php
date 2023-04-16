@@ -22,7 +22,7 @@ final class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldFlagReservationAsConfirmed(): void {
-        $this->reservation->markAsConfirmed();
+        $this->reservationService->markAsConfirmed($this->reservation);
         $this->assertEquals(ReservationStatus::Confirmed, $this->reservation->get_status());
     }
 
@@ -32,8 +32,8 @@ final class ReservationTest extends ReservationBaseTest {
      */
     public function shouldCatchDoubleConfirmation(): void {
         $this->expectException(InvalidArgumentException::class);
-        $this->reservation->markAsConfirmed();
-        $this->reservation->markAsConfirmed();
+        $this->reservationService->markAsConfirmed($this->reservation);
+        $this->reservationService->markAsConfirmed($this->reservation);
     }
 
     /**
@@ -41,7 +41,7 @@ final class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldFlagAsRejected(): void {
-        $this->reservation->markAsRejected();
+        $this->reservationService->markAsRejected($this->reservation);
         $this->assertEquals(ReservationStatus::Rejected, $this->reservation->get_status());
     }
 
@@ -50,8 +50,8 @@ final class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldFlagAsPaid(): void {
-        $this->reservation->markAsConfirmed();
-        $this->reservation->markAsPaid();
+        $this->reservationService->markAsConfirmed($this->reservation);
+        $this->reservationService->markAsPaid($this->reservation);
         $this->assertEquals(ReservationStatus::Paid, $this->reservation->get_status());
     }
 
@@ -61,8 +61,8 @@ final class ReservationTest extends ReservationBaseTest {
      */
     public function shouldPreventToFlagRejectedAsPaid(): void {
         $this->expectException(InvalidArgumentException::class);
-        $this->reservation->markAsRejected();
-        $this->reservation->markAsRejected();
+        $this->reservationService->markAsRejected($this->reservation);
+        $this->reservationService->markAsRejected($this->reservation);
     }
 
     /**
@@ -70,9 +70,9 @@ final class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldEndReservation(): void {
-        $this->reservation->markAsConfirmed();
-        $this->reservation->markAsPaid();
-        $this->reservation->markAsEnded();
+        $this->reservationService->markAsConfirmed($this->reservation);
+        $this->reservationService->markAsPaid($this->reservation);
+        $this->reservationService->markAsEnded($this->reservation);
         $this->assertEquals(ReservationStatus::Ended, $this->reservation->get_status());
     }
 
@@ -80,8 +80,8 @@ final class ReservationTest extends ReservationBaseTest {
      * @throws Exception
      */
     public function shouldCancelReservation(): void {
-        $this->reservation->markAsConfirmed();
-        $this->reservation->markAsCanceled();
+        $this->reservationService->markAsConfirmed($this->reservation);
+        $this->reservationService->markAsCanceled($this->reservation);
         $this->assertEquals(ReservationStatus::Canceled, $this->reservation->get_status());
     }
 }

@@ -4,11 +4,10 @@ namespace BookMe\Tests;
 
 use BookMe\Reservation;
 use DateInterval;
-use DateTimeImmutable;
 use Exception;
 use BookMe\Availability;
 use BookMe\Bookable;
-use BookMe\ReservationList;
+use BookMe\Service\ReservationListService;
 use BookMe\Tests\Builder\BuilderGenerator;
 use BookMe\Tests\Builders\AvailabilityBuilder;
 use BookMe\Tests\Builders\BookableBuilder;
@@ -28,7 +27,7 @@ class AvailabilityTest extends TestCase {
          */
         $this->reservation = BuilderGenerator::a('Reservation');
 
-        ReservationList::setReservedDates($this->reservation);
+        ReservationListService::setReservedDates($this->reservation);
     }
 
     /**

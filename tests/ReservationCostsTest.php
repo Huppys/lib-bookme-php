@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
+use BookMe\Service\ReservationService;
 use Exception;
 
 final class ReservationCostsTest extends ReservationBaseTest {
@@ -16,7 +17,7 @@ final class ReservationCostsTest extends ReservationBaseTest {
             (
                 $this->reservation->get_bookableEntity()->get_tariffs()[0]->get_price() +
                 $this->reservation->get_bookableEntity()->get_tariffs()[1]->get_price()
-            ) * (1.0 + ($this->reservation->get_bookableEntity()->get_taxAmount() / 100)), $this->reservation->calculateCosts()
+            ) * (1.0 + ($this->reservation->get_bookableEntity()->get_taxAmount() / 100)), $this->reservationService->calculateCosts($this->reservation)
         );
     }
 

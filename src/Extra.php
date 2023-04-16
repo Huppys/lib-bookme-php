@@ -4,14 +4,12 @@ namespace BookMe;
 
 class Extra implements Buildable {
 
-    private int $_id;
     private string $_title;
     private float $_costs;
     private float $_taxAmount;
     private string $_description;
 
-    public function __construct(int $_id, string $_title, float $_costs, float $_taxAmount, string $_description) {
-        $this->_id = $_id;
+    public function __construct(string $_title, float $_costs, float $_taxAmount, string $_description) {
         $this->_title = $_title;
         $this->_costs = $_costs;
         $this->_taxAmount = $_taxAmount;
@@ -30,20 +28,6 @@ class Extra implements Buildable {
      */
     public function set_description(string $description): void {
         $this->_description = $description;
-    }
-
-    /**
-     * @return int
-     */
-    public function get_id(): int {
-        return $this->_id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function set_id(int $id): void {
-        $this->_id = $id;
     }
 
     /**

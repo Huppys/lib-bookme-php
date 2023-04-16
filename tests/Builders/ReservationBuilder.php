@@ -20,7 +20,12 @@ class ReservationBuilder extends BaseBuilder {
          */
         $bookable = BuilderGenerator::a('Bookable');
 
-        $reservation = new Reservation(1, $this->get_checkInDate(), $this->get_checkOutDate(), $bookable, null);
+        /**
+         * @uses GuestBuilder
+         */
+        $guest = BuilderGenerator::a('Guest');
+
+        $reservation = new Reservation($this->get_checkInDate(), $this->get_checkOutDate(), $bookable, null, $guest);
 
         $this->setEntity($reservation);
     }
@@ -39,6 +44,12 @@ class ReservationBuilder extends BaseBuilder {
          */
         $services = [BuilderGenerator::a('Extra')];
 
-        return new Reservation(1, (new ReservationBuilder())->get_checkInDate(), (new ReservationBuilder())->get_checkOutDate(), $bookable, $services);
+
+        /**
+         * @uses GuestBuilder
+         */
+        $guest = BuilderGenerator::a('Guest');
+
+        return new Reservation((new ReservationBuilder())->get_checkInDate(), (new ReservationBuilder())->get_checkOutDate(), $bookable, $services, $guest);
     }
 }

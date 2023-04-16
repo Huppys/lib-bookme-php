@@ -2,6 +2,7 @@
 
 namespace BookMe\Tests;
 
+use BookMe\Service\ReservationService;
 use Exception;
 use BookMe\Extra;
 use BookMe\Tests\Builders\ReservationBuilder;
@@ -9,6 +10,9 @@ use BookMe\Tests\Builders\ReservationBuilder;
 class ReservationWithExtraCostsTest extends ReservationBaseTest {
 
     public function setUp(): void {
+
+        parent::setUp();
+
         /**
          * @uses ReservationBuilder
          */
@@ -26,7 +30,7 @@ class ReservationWithExtraCostsTest extends ReservationBaseTest {
                   $this->reservation->get_bookableEntity()->get_tariffs()[1]->get_price()
               ) * (1.0 + ($this->reservation->get_bookableEntity()->get_taxAmount() / 100)) +
               $this->mapExtrasToCosts($this->reservation->get_extras())
-            , $this->reservation->calculateCosts()
+            , $this->reservationService->calculateCosts($this->reservation)
         );
     }
 

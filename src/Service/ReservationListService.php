@@ -1,14 +1,16 @@
 <?php
 
-namespace BookMe;
+namespace BookMe\Service;
 
+use BookMe\Bookable;
+use BookMe\Reservation;
 use DateTime;
 use DateTimeImmutable;
 use Ds\Map;
 use Exception;
 use When\When;
 
-class ReservationList {
+class ReservationListService {
 
     private static ?Map $reservationsByBookable = null;
 

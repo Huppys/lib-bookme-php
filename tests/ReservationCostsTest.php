@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
-use BookMe\Service\ReservationService;
 use Exception;
 
 final class ReservationCostsTest extends ReservationBaseTest {

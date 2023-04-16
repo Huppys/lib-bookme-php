@@ -2,7 +2,6 @@
 
 namespace BookMe\Tests;
 
-use BookMe\Service\ReservationService;
 use Exception;
 use BookMe\Extra;
 use BookMe\Tests\Builders\ReservationBuilder;

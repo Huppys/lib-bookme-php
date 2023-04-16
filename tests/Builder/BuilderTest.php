@@ -8,11 +8,11 @@ use Symfony\Component\Finder\Finder;
 
 class BuilderTest extends TestCase {
 
-    public static function getPathByClassPath(string $classPath) {
+    public static function getPathByClassPath(string $classPath): string {
         return str_replace('BookMe\\', DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR, $classPath);
     }
 
-    public function getAllNameSpaces(string $path) {
+    public function getAllNameSpaces(string $path): array {
         $filenames = $this->getFilenames($path);
         $namespaces = [];
         foreach ($filenames as $filename) {
@@ -21,12 +21,11 @@ class BuilderTest extends TestCase {
         return $namespaces;
     }
 
-    private function getClassName($filename) {
+    private function getClassName($filename): ?string {
         $directoriesAndFilename = explode('/', $filename);
         $filename = array_pop($directoriesAndFilename);
         $nameAndExtension = explode('.', $filename);
-        $className = array_shift($nameAndExtension);
-        return $className;
+        return array_shift($nameAndExtension);
     }
 
     private function getFullNamespace($filename) {
@@ -35,12 +34,10 @@ class BuilderTest extends TestCase {
         $namespaceLine = array_shift($array);
         $match = [];
         preg_match('/^namespace (.*);$/', $namespaceLine, $match);
-        $fullNamespace = array_pop($match);
-
-        return $fullNamespace;
+        return array_pop($match);
     }
 
-    private function getFilenames($path) {
+    private function getFilenames($path): array {
         $finderFiles = Finder::create()->files()->in($path)->name('*.php');
         $filenames = [];
         foreach ($finderFiles as $finderFile) {
@@ -103,6 +100,6 @@ class BuilderTest extends TestCase {
      * @return void
      */
     public function shouldHaveBuilderForEveryClassImplementingBuildableInterface(): void {
-        $this->assertEquals(count($this->getBuildableClasses()), count($this->getBuilderTestClasses()));
+        $this->assertSameSize($this->getBuildableClasses(), $this->getBuilderTestClasses());
     }
 }

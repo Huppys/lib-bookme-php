@@ -4,12 +4,17 @@ namespace BookMe\Tests;
 
 use BookMe\Extra;
 use BookMe\Tests\Builder\BuilderGenerator;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class ExtraTest extends TestCase {
 
     protected Extra $_service;
 
+    /**
+     * @return void
+     * @throws Exception
+     */
     public function setUp(): void {
         $this->_service = BuilderGenerator::a('Extra');
     }

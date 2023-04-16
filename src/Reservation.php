@@ -16,9 +16,9 @@ class Reservation implements Buildable {
     private ?array $_extras;
     private Guest $guest;
 
-    function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, ?array $extras, Guest $guest, string $entityId) {
+    function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, ?array $extras, Guest $guest) {
 
-        $this->entityId = $entityId;
+        $this->entityId = hash("sha256", $checkInDate->getTimestamp() . $checkOutDate->getTimestamp());
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
         $this->_bookableEntity = $bookableEntity;

@@ -2,25 +2,25 @@
 
 namespace BookMe;
 
-enum ReservationStatus {
+enum ReservationStatus: string {
     /* User requested a reservation */
-    case Created;
+    case Created = 'Created';
 
     /* A reservation was confirmed */
-    case Confirmed;
+    case Confirmed = 'Confirmed';
 
     /* A reservation was rejected */
-    case Rejected;
+    case Rejected = 'Rejected';
 
     /* A reservation is paid */
-    case Paid;
+    case Paid = 'Paid';
 
     /* A reservation ended after the checkout */
-    case Ended;
+    case Ended = 'Ended';
 
     /* A reservation is canceled by any party */
-    case Canceled;
+    case Canceled = 'Canceled';
 
     /* A reservation is deleted */
-    case Deleted;
+    case Deleted = 'Deleted';
 }

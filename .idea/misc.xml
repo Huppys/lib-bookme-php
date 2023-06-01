@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="PhpEntryPointsManager">
+    <entry_point>
+      <entry_point TYPE="phpNamespace" FQNAME="\BookMe" />
+      <entry_point TYPE="phpClass" FQNAME="\BookMe\Address" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Address __construct" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Reservation checkInDateIsBeforeCheckOutDate" />
+      <entry_point TYPE="phpClass" FQNAME="\BookMe\Reservation" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Reservation __construct" />
+      <entry_point TYPE="phpClass" FQNAME="\BookMe\Extra" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Extra __construct" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Address get_city" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Address get_number" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Address get_postalCode" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Address get_street" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getCity" />
+      <entry_point TYPE="phpClass" FQNAME="\BookMe\Guest" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest __construct" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getEmail" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getFirstname" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getHouseNumber" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getLastname" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getPostalCode" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Guest getStreet" />
+      <entry_point TYPE="phpMethod" FQNAME="\BookMe\Reservation set_extras" />
+    </entry_point>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="temurin-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

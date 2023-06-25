@@ -9,12 +9,14 @@ class Address implements Buildable {
     private string $_street;
     private string $_number;
     private string $_postalCode;
+    private string $_country;
 
-    function __construct(string $_city, string $_street, string $_number, string $_postalCode) {
+    function __construct(string $_city, string $_street, string $_number, string $_postalCode, string $_country) {
         $this->_city = $_city;
         $this->_street = $_street;
         $this->_number = $_number;
         $this->_postalCode = $_postalCode;
+        $this->_country = $_country;
     }
 
     /**
@@ -43,5 +45,19 @@ class Address implements Buildable {
      */
     public function get_postalCode(): string {
         return $this->_postalCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_country(): string {
+        return $this->_country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function set_country(string $country): void {
+        $this->_country = $country;
     }
 }

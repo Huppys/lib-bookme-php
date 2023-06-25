@@ -12,7 +12,8 @@ class AddressBuilder extends BaseBuilder {
             'TestCity',
             'TestStreet',
             '1a',
-            '12345'
+            '12345',
+            'DE'
         );
 
         $this->setEntity($address);

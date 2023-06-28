@@ -2,7 +2,7 @@
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Address;
+use BookMe\Entity\Address;
 
 class AddressBuilder extends BaseBuilder {
 

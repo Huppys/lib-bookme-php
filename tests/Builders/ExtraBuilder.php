@@ -2,7 +2,7 @@
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Extra;
+use BookMe\Entity\Extra;
 
 class ExtraBuilder extends BaseBuilder {
 

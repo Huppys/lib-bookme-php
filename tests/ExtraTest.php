@@ -2,7 +2,7 @@
 
 namespace BookMe\Tests;
 
-use BookMe\Extra;
+use BookMe\Entity\Extra;
 use BookMe\Tests\Builder\BuilderGenerator;
 use Exception;
 use PHPUnit\Framework\TestCase;

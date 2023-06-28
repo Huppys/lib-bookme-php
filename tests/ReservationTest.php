@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
+use BookMe\Entity\ReservationStatus;
 use Exception;
-use BookMe\ReservationStatus;
 use InvalidArgumentException;
 
 final class ReservationTest extends ReservationBaseTest {

@@ -2,7 +2,7 @@
 
 namespace BookMe\Service;
 
-use BookMe\Reservation;
+use BookMe\Entity\TimeRange;
 use DateInterval;
 use DateTimeImmutable;
 use Exception;
@@ -10,33 +10,33 @@ use Exception;
 class AvailabilityService {
 
     /**
-     * @param Reservation[] $reservationList
-     * @param DateTimeImmutable $start
-     * @param DateTimeImmutable $end
+     * @param TimeRange[] $bookedTimeRanges - Array of time ranges, e.g. from a booked entity
+     * @param int $start - Start date as timestamp
+     * @param int $end - End date as timestamp
      * @return array
      * @throws Exception
      */
-    public static function filterAvailableDates(?array $reservationList, DateTimeImmutable $start, DateTimeImmutable $end): array {
+    public static function filterAvailableDates(?array $bookedTimeRanges, DateTimeImmutable $start, DateTimeImmutable $end): array {
 
         // create empty array for possible unreserved dates
         $unreservedDates = [];
 
         // iterate reservations
-        foreach ($reservationList as $reservation) {
+        foreach ($bookedTimeRanges as $bookedTimeRange) {
 
             // if the start date is before the checkin and checkout is before the end date ...
-            if ($start->getTimestamp() < $reservation->get_checkInDate()->getTimestamp() && $end->getTimeStamp() >
-                $reservation->get_checkOutDate()->getTimestamp()) {
+            if ($start->getTimestamp() < $bookedTimeRange->getStart()->getTimestamp() && $end->getTimeStamp() >
+                $bookedTimeRange->getEnd()->getTimestamp()) {
 
                 // ... add a new unreserved date that starts at $start and ends the day before checkin date
                 $unreservedDates[] = array(
                     'start' => $start,
-                    'end' => $reservation->get_checkInDate()->sub(new DateInterval('P1D'))
+                    'end' => $bookedTimeRange->getStart()->sub(new DateInterval('P1D'))
                 );
             }
 
             // overwrite the start with the date of one day after the checkout date so we start the next iteration there
-            $start = $reservation->get_checkOutDate()->add(new DateInterval('P1D'));
+            $start = $bookedTimeRange->getEnd()->add(new DateInterval('P1D'));
         }
 
         // if there is still time left in the requested time range ...

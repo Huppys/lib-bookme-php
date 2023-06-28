@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Availability;
+use BookMe\Entity\Availability;
 use BookMe\Tests\Builder\BuilderGenerator;
 use Exception;
 

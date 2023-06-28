@@ -38,7 +38,7 @@ class BuilderGenerator {
      * @throws Exception
      */
     public static function entityClassIsBuildable(string $className): bool {
-        $entityClassDirPath = $_ENV["PROJECT_ROOT"] . '/src/';
+        $entityClassDirPath = $_ENV["PROJECT_ROOT"] . '/src/Entity/';
         $entityClassBasePath = $entityClassDirPath . $className . '.php';
         if (file_exists($entityClassBasePath)) {
             return self::entityClassImplementsBuildable($className);
@@ -53,7 +53,7 @@ class BuilderGenerator {
      * @return bool
      */
     public static function entityClassImplementsBuildable(string $className): bool {
-        $classPath = 'BookMe\\' . $className;
+        $classPath = 'BookMe\\Entity\\' . $className;
 
         $implemented_interfaces = class_implements($classPath);
 

@@ -2,9 +2,9 @@
 
 namespace BookMe\Service;
 
-use BookMe\Extra;
-use BookMe\Reservation;
-use BookMe\ReservationStatus;
+use BookMe\Entity\Extra;
+use BookMe\Entity\Reservation;
+use BookMe\Entity\ReservationStatus;
 use Exception;
 use InvalidArgumentException;
 

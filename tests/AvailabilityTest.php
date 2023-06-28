@@ -2,16 +2,16 @@
 
 namespace BookMe\Tests;
 
-use BookMe\Reservation;
-use DateInterval;
-use Exception;
-use BookMe\Availability;
-use BookMe\Bookable;
+use BookMe\Entity\Availability;
+use BookMe\Entity\Bookable;
+use BookMe\Entity\Reservation;
 use BookMe\Service\ReservationListService;
 use BookMe\Tests\Builder\BuilderGenerator;
 use BookMe\Tests\Builders\AvailabilityBuilder;
 use BookMe\Tests\Builders\BookableBuilder;
 use BookMe\Tests\Builders\ReservationBuilder;
+use DateInterval;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class AvailabilityTest extends TestCase {

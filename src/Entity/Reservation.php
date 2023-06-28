@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BookMe;
+namespace BookMe\Entity;
 
+use BookMe\Buildable;
 use DateTimeImmutable;
 
 class Reservation implements Buildable {

@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BookMe;
+namespace BookMe\Entity;
+
+use BookMe\Buildable;
 
 class Address implements Buildable {
     private string $_city;

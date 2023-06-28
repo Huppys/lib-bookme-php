@@ -1,6 +1,8 @@
 <?php
 
-namespace BookMe;
+namespace BookMe\Entity;
+
+use BookMe\Buildable;
 
 class Extra implements Buildable {
 

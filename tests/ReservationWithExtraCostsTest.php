@@ -2,9 +2,9 @@
 
 namespace BookMe\Tests;
 
-use Exception;
-use BookMe\Extra;
+use BookMe\Entity\Extra;
 use BookMe\Tests\Builders\ReservationBuilder;
+use Exception;
 
 class ReservationWithExtraCostsTest extends ReservationBaseTest {
 

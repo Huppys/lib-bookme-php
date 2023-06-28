@@ -2,9 +2,9 @@
 
 namespace BookMe\Tests\Builders;
 
-use Exception;
-use BookMe\Bookable;
+use BookMe\Entity\Bookable;
 use BookMe\Tests\Builder\BuilderGenerator;
+use Exception;
 
 class BookableBuilder extends BaseBuilder {
     /**

@@ -47,13 +47,13 @@ class BuilderTest extends TestCase {
     }
 
     private function getBuildableClasses(): array {
-        $filenames = $this->getFilenames($_ENV["PROJECT_ROOT"] . '/src');
+        $filenames = $this->getFilenames($_ENV["PROJECT_ROOT"] . '/src/Entity');
 
         $buildableClasses = [];
 
         foreach ($filenames as $filename) {
 
-            if ($this->getFullNamespace($filename) == 'BookMe') {
+            if ($this->getFullNamespace($filename) == 'BookMe\\Entity') {
                 // TODO OWI: Create map with [className] => filepath
                 include_once $filename;
             }

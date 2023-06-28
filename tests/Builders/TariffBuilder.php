@@ -2,7 +2,7 @@
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Tariff;
+use BookMe\Entity\Tariff;
 use DateInterval;
 use DateTimeImmutable;
 use Exception;

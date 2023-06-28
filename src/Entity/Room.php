@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BookMe;
+namespace BookMe\Entity;
+
+use BookMe\Buildable;
 
 class Room implements Buildable {
 

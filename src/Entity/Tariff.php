@@ -1,7 +1,8 @@
 <?php
 
-namespace BookMe;
+namespace BookMe\Entity;
 
+use BookMe\Buildable;
 use DateTimeImmutable;
 
 class Tariff implements Buildable {

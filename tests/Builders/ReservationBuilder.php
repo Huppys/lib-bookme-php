@@ -2,7 +2,7 @@
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Reservation;
+use BookMe\Entity\Reservation;
 use BookMe\Tests\Builder\BuilderGenerator;
 use Exception;
 

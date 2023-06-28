@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace BookMe;
+namespace BookMe\Entity;
 
 
+use BookMe\Buildable;
 use DateTime;
 use DateTimeImmutable;
 use Exception;

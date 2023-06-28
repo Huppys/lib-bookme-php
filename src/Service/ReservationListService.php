@@ -2,8 +2,9 @@
 
 namespace BookMe\Service;
 
-use BookMe\Bookable;
-use BookMe\Reservation;
+use BookMe\Entity\Bookable;
+use BookMe\Entity\Reservation;
+use BookMe\Entity\TimeRange;
 use DateTime;
 use DateTimeImmutable;
 use Ds\Map;
@@ -18,7 +19,7 @@ class ReservationListService {
      * @param Bookable $bookable
      * @param DateTimeImmutable $start
      * @param DateTimeImmutable $end
-     * @return Reservation[] | null
+     * @return TimeRange[] | null
      * @throws Exception
      */
     public static function getReservedDates(Bookable $bookable, DateTimeImmutable $start, DateTimeImmutable $end): ?array {
@@ -26,6 +27,8 @@ class ReservationListService {
 
         /** @var Reservation[] $values */
         $values = self::$reservationsByBookable->get($key);
+
+        $values = array_map(fn($reservation) => new TimeRange($reservation->get_checkInDate(), $reservation->get_checkOutDate()), $values);
 
         return array_filter(
             $values,
@@ -49,13 +52,13 @@ class ReservationListService {
     }
 
     /**
-     * @param Reservation $reservation
+     * @param TimeRange $timeRange
      * @param DateTimeImmutable $start
      * @param DateTimeImmutable $end
      * @return bool
      * @throws Exception
      */
-    private static function startAndEndAreInDateRange(Reservation $reservation, DateTimeImmutable $start, DateTimeImmutable $end): bool {
+    private static function startAndEndAreInDateRange(TimeRange $timeRange, DateTimeImmutable $start, DateTimeImmutable $end): bool {
 
         // create occurrences lookup from the $start ...
         $when = new When(DateTime::createFromImmutable($start)->format('Y-m-d'));
@@ -63,6 +66,6 @@ class ReservationListService {
         $when->freq('daily')->until(DateTime::createFromImmutable($end));
 
         // find if at least on day between checkin date and the checkout date occurs in the occurrence lookup time range
-        return count($when->getOccurrencesBetween($reservation->get_checkInDate(), $reservation->get_checkOutDate())) > 0;
+        return count($when->getOccurrencesBetween($timeRange->getStart(), $timeRange->getEnd())) > 0;
     }
 }

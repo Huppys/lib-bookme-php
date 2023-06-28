@@ -1,6 +1,6 @@
 <?php
 
-namespace BookMe;
+namespace BookMe\Entity;
 
 enum ReservationStatus: string {
     /* User requested a reservation */

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
+use BookMe\Entity\Bookable;
+use BookMe\Entity\Reservation;
 use BookMe\Service\ReservationService;
+use BookMe\Tests\Builder\BuilderGenerator;
 use DateTimeImmutable;
 use Exception;
-use BookMe\Bookable;
-use BookMe\Reservation;
-use BookMe\Tests\Builder\BuilderGenerator;
 use PHPUnit\Framework\TestCase;
 
 class ReservationBaseTest extends TestCase {

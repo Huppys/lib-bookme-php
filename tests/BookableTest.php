@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
-use Exception;
-use BookMe\Address;
-use BookMe\Bookable;
+use BookMe\Entity\Address;
+use BookMe\Entity\Bookable;
 use BookMe\Tests\Builder\BuilderGenerator;
 use BookMe\Tests\Builders\TariffBuilder;
+use Exception;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 

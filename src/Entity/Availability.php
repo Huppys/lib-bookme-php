@@ -1,7 +1,8 @@
 <?php
 
-namespace BookMe;
+namespace BookMe\Entity;
 
+use BookMe\Buildable;
 use BookMe\Service\AvailabilityService;
 use BookMe\Service\ReservationListService;
 use DateTimeImmutable;
@@ -27,14 +28,14 @@ class Availability implements Buildable {
 
         // get reserved dates for bookable after $start and before $end
         /** @var Reservation[] $reservationList */
-        $reservationList = ReservationListService::getReservedDates($this->_bookable, $this->_start, $this->_end);
+        $bookedTimeRanges = ReservationListService::getReservedDates($this->_bookable, $this->_start, $this->_end);
 
-        if ($reservationList == null) {
+        if ($bookedTimeRanges == null) {
             return null;
         }
 
         // find occurrences where reserved dates are not present after $start and before $end
-        return AvailabilityService::filterAvailableDates($reservationList, $this->_start, $this->_end);
+        return AvailabilityService::filterAvailableDates($bookedTimeRanges, $this->_start, $this->_end);
     }
 
     /**

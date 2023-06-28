@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BookMe\Tests;
 
-use BookMe\Guest;
+use BookMe\Entity\Guest;
 use BookMe\Tests\Builder\BuilderGenerator;
 use Exception;
 use PHPUnit\Framework\TestCase;

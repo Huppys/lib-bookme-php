@@ -2,7 +2,7 @@
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Room;
+use BookMe\Entity\Room;
 
 class RoomBuilder extends BaseBuilder {
 

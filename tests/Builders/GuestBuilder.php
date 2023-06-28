@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BookMe\Tests\Builders;
 
-use BookMe\Guest;
+use BookMe\Entity\Guest;
 
 class GuestBuilder extends BaseBuilder {
 

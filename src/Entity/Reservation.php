@@ -18,7 +18,6 @@ class Reservation implements Buildable {
     private Guest $guest;
 
     function __construct(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate, Bookable $bookableEntity, ?array $extras, Guest $guest) {
-
         $this->entityId = hash("sha256", $checkInDate->getTimestamp() . $checkOutDate->getTimestamp());
         $this->_checkInDate = $checkInDate;
         $this->_checkOutDate = $checkOutDate;
@@ -75,15 +74,6 @@ class Reservation implements Buildable {
      */
     public function set_extras(?array $extras): void {
         $this->_extras = $extras;
-    }
-
-    /**
-     * @param DateTimeImmutable $checkInDate
-     * @param DateTimeImmutable $checkOutDate
-     * @return bool
-     */
-    public function checkInDateIsBeforeCheckOutDate(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate): bool {
-        return $checkInDate->getTimestamp() < $checkOutDate->getTimestamp();
     }
 
     /**

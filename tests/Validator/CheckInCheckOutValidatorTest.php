@@ -7,6 +7,7 @@ use BookMe\Entity\Reservation;
 use BookMe\Service\ReservationService;
 use BookMe\Tests\Builder\BuilderGenerator;
 use BookMe\Validator\CheckInCheckOutValidator;
+use BookMe\Validator\ReservationValidationError;
 use DateInterval;
 use Exception;
 use PHPUnit\Framework\TestCase;
@@ -33,13 +34,13 @@ class CheckInCheckOutValidatorTest extends TestCase {
      * @test
      */
     public function shouldCreateValidReservation(): void {
-        $isValid = CheckInCheckOutValidator::isValid(
+        $reservationValidationError = CheckInCheckOutValidator::isValid(
             checkInDate:         $this->reservation->get_checkInDate(),
             checkOutDate:        $this->reservation->get_checkOutDate(),
             earliestCheckInDate: $this->reservation->get_checkInDate()->sub(new DateInterval('P1D')),
-            latestCheckOutDate:  null
+            latestCheckOutDate:  $this->reservation->get_checkOutDate()->add(new DateInterval('P14D'))
         );
-        $this->assertTrue($isValid);
+        $this->assertEquals(ReservationValidationError::Valid, $reservationValidationError);
     }
 
     /**
@@ -47,14 +48,14 @@ class CheckInCheckOutValidatorTest extends TestCase {
      * @test
      */
     public function shouldFailWithCheckInDateAfterCheckOutDate(): void {
-        $isValid = CheckInCheckOutValidator::isValid(
+        $reservationValidationError = CheckInCheckOutValidator::isValid(
             checkInDate:         $this->reservation->get_checkOutDate(),
             checkOutDate:        $this->reservation->get_checkInDate(),
             earliestCheckInDate: $this->reservation->get_checkInDate()->sub(new DateInterval('P1D')),
-            latestCheckOutDate:  null
+            latestCheckOutDate:  $this->reservation->get_checkOutDate()->add(new DateInterval('P14D'))
         );
 
-        $this->assertFalse($isValid);
+        $this->assertEquals(ReservationValidationError::CheckInIsAfterCheckoutDate, $reservationValidationError);
     }
 
     /**
@@ -62,14 +63,14 @@ class CheckInCheckOutValidatorTest extends TestCase {
      * @test
      */
     public function shouldFailWithCheckInDateEqualsEarliestCheckInDate(): void {
-        $isValid = CheckInCheckOutValidator::isValid(
+        $reservationValidationError = CheckInCheckOutValidator::isValid(
             checkInDate:         $this->reservation->get_checkInDate(),
             checkOutDate:        $this->reservation->get_checkOutDate(),
             earliestCheckInDate: $this->reservation->get_checkInDate(),
-            latestCheckOutDate:  null
+            latestCheckOutDate:  $this->reservation->get_checkOutDate()->add(new DateInterval('P14D'))
         );
 
-        $this->assertFalse($isValid);
+        $this->assertEquals(ReservationValidationError::CheckInDateIsTooEarly, $reservationValidationError);
     }
 
     /**
@@ -77,13 +78,13 @@ class CheckInCheckOutValidatorTest extends TestCase {
      * @test
      */
     public function shouldFailWithCheckOutDateAfterLatestCheckOutDate(): void {
-        $isValid = CheckInCheckOutValidator::isValid(
+        $reservationValidationError = CheckInCheckOutValidator::isValid(
             checkInDate:         $this->reservation->get_checkInDate(),
             checkOutDate:        $this->reservation->get_checkOutDate()->add(new DateInterval('P2D')),
             earliestCheckInDate: $this->reservation->get_checkInDate()->sub(new DateInterval('P1D')),
             latestCheckOutDate:  $this->reservation->get_checkOutDate()->add(new DateInterval('P1D'))
         );
 
-        $this->assertFalse($isValid);
+        $this->assertEquals(ReservationValidationError::CheckoutDateIsTooLate, $reservationValidationError);
     }
 }

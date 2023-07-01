@@ -2,36 +2,30 @@
 
 namespace BookMe\Validator;
 
-use DateInterval;
-use DateTime;
 use DateTimeImmutable;
 
 final class CheckInCheckOutValidator {
 
     public static function isValid(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate,
-                                   DateTimeImmutable $earliestCheckInDate, ?DateTimeImmutable $latestCheckOutDate): bool {
+                                   DateTimeImmutable $earliestCheckInDate, DateTimeImmutable $latestCheckOutDate): ReservationValidationError {
 
-        // TODO: Implement reservation settings containing maximum stay duration
-        if ($latestCheckOutDate == null) {
-            $latestCheckOutDate = DateTimeImmutable::createFromMutable(new DateTime())->add(new DateInterval('P14D'));
-        }
 
         // Check-in date must be before check-out date
         if (!self::checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
-            return false;
+            return ReservationValidationError::CheckInIsAfterCheckoutDate;
         }
 
         // Check-in date must not be today or earlier
         if (self::checkInDateIsEarlierThanEarliestCheckInDate($checkInDate, $earliestCheckInDate)) {
-            return false;
+            return ReservationValidationError::CheckInDateIsTooEarly;
         }
 
         // Check-out date must not be later than maximum stay duration
         if (self::checkOutDateIsLaterThanLatestCheckOutDate($checkOutDate, $latestCheckOutDate)) {
-            return false;
+            return ReservationValidationError::CheckoutDateIsTooLate;
         }
 
-        return true;
+        return ReservationValidationError::Valid;
     }
 
     /**
@@ -44,11 +38,11 @@ final class CheckInCheckOutValidator {
 
     }
 
-    private static function checkInDateIsEarlierThanEarliestCheckInDate(DateTimeImmutable $checkInDate, DateTimeImmutable $earliestCheckInDate) {
+    private static function checkInDateIsEarlierThanEarliestCheckInDate(DateTimeImmutable $checkInDate, DateTimeImmutable $earliestCheckInDate): bool {
         return $checkInDate->getTimestamp() <= $earliestCheckInDate->getTimestamp();
     }
 
-    private static function checkOutDateIsLaterThanLatestCheckOutDate(DateTimeImmutable $checkOutDate, DateTimeImmutable $latestCheckOutDate) {
+    private static function checkOutDateIsLaterThanLatestCheckOutDate(DateTimeImmutable $checkOutDate, DateTimeImmutable $latestCheckOutDate): bool {
         return $checkOutDate->getTimestamp() > $latestCheckOutDate->getTimestamp();
     }
 }

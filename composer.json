@@ -9,7 +9,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         }
     },
     "license": "MIT",
@@ -32,7 +32,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-ds": "*",
         "tplaner/when": "^v3.1.5"
     }

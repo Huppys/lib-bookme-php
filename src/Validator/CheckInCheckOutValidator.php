@@ -9,6 +9,12 @@ final class CheckInCheckOutValidator {
     public static function isValid(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate,
                                    DateTimeImmutable $earliestCheckInDate, DateTimeImmutable $latestCheckOutDate): ReservationValidationError {
 
+        $checkInDate = $checkInDate->setTime(0, 0, 0);
+        $checkOutDate = $checkOutDate->setTime(0, 0, 0);
+
+        if ($checkInDate == $checkOutDate) {
+            return ReservationValidationError::CheckInDayEqualsCheckOutDay;
+        }
 
         // Check-in date must be before check-out date
         if (!self::checkInDateIsBeforeCheckOutDate($checkInDate, $checkOutDate)) {
@@ -35,7 +41,6 @@ final class CheckInCheckOutValidator {
      */
     private static function checkInDateIsBeforeCheckOutDate(DateTimeImmutable $checkInDate, DateTimeImmutable $checkOutDate): bool {
         return $checkInDate->getTimestamp() < $checkOutDate->getTimestamp();
-
     }
 
     private static function checkInDateIsEarlierThanEarliestCheckInDate(DateTimeImmutable $checkInDate, DateTimeImmutable $earliestCheckInDate): bool {

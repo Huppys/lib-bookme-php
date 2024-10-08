@@ -87,4 +87,19 @@ class CheckInCheckOutValidatorTest extends TestCase {
 
         $this->assertEquals(ReservationValidationError::CheckoutDateIsTooLate, $reservationValidationError);
     }
+
+    /**
+     * @return void
+     * @test
+     */
+    public function shouldFailWithCheckInDateEqualsCheckOutDate(): void {
+        $reservationValidationError = CheckInCheckOutValidator::isValid(
+            checkInDate:         $this->reservation->get_checkInDate(),
+            checkOutDate:        $this->reservation->get_checkInDate(),
+            earliestCheckInDate: $this->reservation->get_checkInDate()->sub(new DateInterval('P1D')),
+            latestCheckOutDate:  $this->reservation->get_checkOutDate()->add(new DateInterval('P1D'))
+        );
+
+        $this->assertEquals(ReservationValidationError::CheckInDayEqualsCheckOutDay, $reservationValidationError);
+    }
 }

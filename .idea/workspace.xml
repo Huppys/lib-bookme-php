@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.35506734" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="755b20b4-2f3f-40aa-ba3e-2288a63928d2" name="Changes" comment="Ignore changes in submodule 'docker'">
+      <change afterPath="$PROJECT_DIR$/datetest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/CheckInCheckOutValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/CheckInCheckOutValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Validator/ReservationValidationError.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Validator/ReservationValidationError.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Validator/CheckInCheckOutValidatorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Validator/CheckInCheckOutValidatorTest.php" afterDir="false" />
+    </list>
+    <list id="ec844e8d-ae55-4b6b-ac90-7f9e9ae721b5" name="docker submodule" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <interpreter name="php-dev:latest" composer="composer" />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Oliver Witzki &lt;projects@oliverwitzki.de&gt;" />
+      </list>
+    </option>
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/docker" value="46bd978078a027debfbed92c71a4d0d040c30410" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1685648878" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/docker" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php-dev:latest">
+    <include_path>
+      <path value="$PROJECT_DIR$/tests" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/tplaner/when" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+    </include_path>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2OQ153HTPCZgyXPTlzCn9EFysak" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;aspect.path.notification.shown&quot;: &quot;true&quot;,
+    &quot;com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary&quot;: &quot;PHPUnit&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm&quot;: &quot;Docker&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/oliver.witzki/dev/projects/lib-bookme-php&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
+    &quot;validate /Users/oliver.witzki/dev/projects/lib-bookme-php/composer.json&quot;: &quot;--no-interaction --ansi --verbose --with-dependencies&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHP Script.datetest.php">
+    <configuration name="CheckInCheckOutValidatorTest.shouldCreateValidReservation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="BookMe\Tests\Validator\CheckInCheckOutValidatorTest" file="$PROJECT_DIR$/tests/Validator/CheckInCheckOutValidatorTest.php" method="shouldCreateValidReservation" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CheckInCheckOutValidatorTest.shouldFailWithCheckInDateAfterCheckOutDate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="BookMe\Tests\Validator\CheckInCheckOutValidatorTest" file="$PROJECT_DIR$/tests/Validator/CheckInCheckOutValidatorTest.php" method="shouldFailWithCheckInDateAfterCheckOutDate" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CheckInCheckOutValidatorTest.shouldFailWithCheckInDateEqualsCheckOutDate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <CommandLine>
+        <PhpTestInterpreterSettings>
+          <option name="interpreterName" value="php-dev:latest" />
+        </PhpTestInterpreterSettings>
+      </CommandLine>
+      <TestRunner class="BookMe\Tests\Validator\CheckInCheckOutValidatorTest" directory="$PROJECT_DIR$/tests" file="$PROJECT_DIR$/tests/Validator/CheckInCheckOutValidatorTest.php" method="shouldFailWithCheckInDateEqualsCheckOutDate" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CheckInCheckOutValidatorTest.shouldFailWithCheckInDateEqualsEarliestCheckInDate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="BookMe\Tests\Validator\CheckInCheckOutValidatorTest" file="$PROJECT_DIR$/tests/Validator/CheckInCheckOutValidatorTest.php" method="shouldFailWithCheckInDateEqualsEarliestCheckInDate" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="datetest.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/datetest.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.datetest.php" />
+        <item itemvalue="PHPUnit.CheckInCheckOutValidatorTest.shouldFailWithCheckInDateEqualsCheckOutDate" />
+        <item itemvalue="PHPUnit.CheckInCheckOutValidatorTest.shouldFailWithCheckInDateEqualsEarliestCheckInDate" />
+        <item itemvalue="PHPUnit.CheckInCheckOutValidatorTest.shouldFailWithCheckInDateAfterCheckOutDate" />
+        <item itemvalue="PHPUnit.CheckInCheckOutValidatorTest.shouldCreateValidReservation" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="755b20b4-2f3f-40aa-ba3e-2288a63928d2" name="Changes" comment="" />
+      <changelist id="ec844e8d-ae55-4b6b-ac90-7f9e9ae721b5" name="docker submodule" comment="" />
+      <created>1681477804998</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681477804998</updated>
+      <workItem from="1681477806079" duration="11016000" />
+      <workItem from="1685648804773" duration="573000" />
+      <workItem from="1687727584788" duration="2379000" />
+      <workItem from="1687901932551" duration="1830000" />
+      <workItem from="1687938211591" duration="47000" />
+      <workItem from="1687960910142" duration="6337000" />
+      <workItem from="1688048451353" duration="692000" />
+      <workItem from="1688242239558" duration="4808000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add php-dev-docker as submodule">
+      <created>1681480233417</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681480233417</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add php-dev-docker as submodule">
+      <created>1681480276350</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681480276350</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Remove deprecated dynamic property creation">
+      <created>1681480483530</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681480483530</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Migrate business logic to services">
+      <created>1681657717326</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681657717326</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Update intellij project settings, update documentation">
+      <created>1681657745691</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681657745691</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Prepare reservation status exception usage to be moved">
+      <created>1681657931909</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681657931909</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add entityId to Reservation class to identify reservations">
+      <created>1681658507077</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681658507077</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Create reservation entity id as SHA256 hash">
+      <created>1681658734261</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681658734261</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Clean-up code smell">
+      <created>1681659302650</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681659302650</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update ReservationStatus.php to contain string values to be used in Doctrine ORM mappings">
+      <created>1685649367310</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685649367310</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Implement room entity with test builder RoomBuilder.php, extract logic from Availability.php to AvailabilityService.php">
+      <option name="closed" value="true" />
+      <created>1687728681336</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1687728681336</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Move entity classes to Entity package, AvailabilityService needs an array of TimeRange objects instead of Reservations">
+      <option name="closed" value="true" />
+      <created>1687962152529</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687962152529</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Move check-in date and check-out date validation to CheckInCheckOutValidator.php">
+      <option name="closed" value="true" />
+      <created>1687980722701</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687980722701</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Move check-in date and check-out date validation to CheckInCheckOutValidator.php">
+      <option name="closed" value="true" />
+      <created>1687980928526</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687980928526</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add ReservationValidationError enum to give dedicated feedback about reservation checkin and checkout validation">
+      <option name="closed" value="true" />
+      <created>1688243022842</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688243022842</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Require php 8.2 via composer.json, update dependencies">
+      <option name="closed" value="true" />
+      <created>1688243632375</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1688243632375</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Install unzip via apt to remediate '7z or unzip missing' warning when executing composer">
+      <option name="closed" value="true" />
+      <created>1688243701358</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1688243701358</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Ignore changes in submodule 'docker'">
+      <option name="closed" value="true" />
+      <created>1688243719875</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1688243719875</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$/docker" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CODE_SMELLS_PROFILE" value="Project Default" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT_PROFILE" value="Project Default" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
+    <MESSAGE value="Add php-dev-docker as submodule" />
+    <MESSAGE value="Remove deprecated dynamic property creation" />
+    <MESSAGE value="Migrate business logic to services" />
+    <MESSAGE value="Update intellij project settings, update documentation" />
+    <MESSAGE value="Prepare reservation status exception usage to be moved" />
+    <MESSAGE value="Add entityId to Reservation class to identify reservations" />
+    <MESSAGE value="Create reservation entity id as SHA256 hash" />
+    <MESSAGE value="Clean-up code smell" />
+    <MESSAGE value="Update ReservationStatus.php to contain string values to be used in Doctrine ORM mappings" />
+    <MESSAGE value="Implement room entity with test builder RoomBuilder.php, extract logic from Availability.php to AvailabilityService.php" />
+    <MESSAGE value="Move entity classes to Entity package, AvailabilityService needs an array of TimeRange objects instead of Reservations" />
+    <MESSAGE value="Move check-in date and check-out date validation to CheckInCheckOutValidator.php" />
+    <MESSAGE value="Add ReservationValidationError enum to give dedicated feedback about reservation checkin and checkout validation" />
+    <MESSAGE value="Require php 8.2 via composer.json, update dependencies" />
+    <MESSAGE value="Install unzip via apt to remediate '7z or unzip missing' warning when executing composer" />
+    <MESSAGE value="Ignore changes in submodule 'docker'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore changes in submodule 'docker'" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Validator/CheckInCheckOutValidator.php</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
